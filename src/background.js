@@ -1,4 +1,5 @@
-'use strict';
+/*global chrome*/
+/*eslint no-undef: "error"*/
 
 chrome.runtime.onInstalled.addListener(function () {
 	chrome.runtime.openOptionsPage(() => console.log('options page opened'))
