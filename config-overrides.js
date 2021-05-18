@@ -7,18 +7,16 @@ const paths = require('react-scripts/config/paths');
 const CopyPlugin = require('copy-webpack-plugin');
 
 
-console.log(paths.appSrc);
-console.log(paths.appIndexJs);
 const multipleEntry = require('react-app-rewire-multiple-entry')([
   {
     // points to the popup entry point
-    entry: paths.appSrc + '/options.js',
+    entry: paths.appIndexJs,
     template: 'public/popup.html',
     outPath: '/popup.html'
   },
   {
     // points to the options page entry point
-    entry: 'src/options/index.js',
+    entry: paths.appSrc + '/options.js',
     template: 'public/index.html',
     outPath: '/index.html'
   }
