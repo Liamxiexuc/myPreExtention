@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './views/Options/App';
-// import * as serviceWorker from './serviceWorker';
+import 'normalize.css';
 
 ReactDOM.render(
   <React.StrictMode>
