@@ -2,6 +2,8 @@
   "files": {
     "static/js/0.chunk.js": "/static/js/0.chunk.js",
     "static/js/0.chunk.js.map": "/static/js/0.chunk.js.map",
+    "static/js/2.chunk.js": "/static/js/2.chunk.js",
+    "static/js/2.chunk.js.map": "/static/js/2.chunk.js.map",
     "index.78c2476c.js": "/static/js/index.78c2476c.chunk.js",
     "index.78c2476c.js.map": "/static/js/index.78c2476c.chunk.js.map",
     "main.js": "/static/js/main.chunk.js",
@@ -31,6 +33,7 @@
   "entrypoints": [
     "static/js/runtime-main.bundle.js",
     "static/js/0.chunk.js",
+    "static/js/2.chunk.js",
     "static/js/main.chunk.js"
   ]
 }
