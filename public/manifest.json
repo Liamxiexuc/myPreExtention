@@ -1,0 +1,30 @@
+{
+  "name": "Awesome Extension",
+  "description": "create-react-app for extensions",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16_blue.png",
+      "48": "icon48.png"
+    }
+  },
+  "icons": {
+    "16": "icon16_blue.png",
+    "48": "icon48.png"
+  },
+  "browser_action": {
+    "default_icon": "logo128.png",
+    "default_popup": "popup.html"
+  },
+  "options_page": "index.html"
+}

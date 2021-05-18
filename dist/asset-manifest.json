@@ -1,0 +1,39 @@
+{
+  "files": {
+    "static/js/0.chunk.js": "/static/js/0.chunk.js",
+    "static/js/0.chunk.js.map": "/static/js/0.chunk.js.map",
+    "static/js/1.chunk.js": "/static/js/1.chunk.js",
+    "static/js/1.chunk.js.map": "/static/js/1.chunk.js.map",
+    "index.6379f788.js": "/static/js/index.6379f788.chunk.js",
+    "index.6379f788.js.map": "/static/js/index.6379f788.chunk.js.map",
+    "main.js": "/static/js/main.chunk.js",
+    "main.js.map": "/static/js/main.chunk.js.map",
+    "options.40bb3245.js": "/static/js/options.40bb3245.chunk.js",
+    "options.40bb3245.js.map": "/static/js/options.40bb3245.chunk.js.map",
+    "runtime-index.6379f788.js": "/static/js/runtime-index.6379f788.bundle.js",
+    "runtime-index.6379f788.js.map": "/static/js/runtime-index.6379f788.bundle.js.map",
+    "runtime-main.js": "/static/js/runtime-main.bundle.js",
+    "runtime-main.js.map": "/static/js/runtime-main.bundle.js.map",
+    "runtime-options.40bb3245.js": "/static/js/runtime-options.40bb3245.bundle.js",
+    "runtime-options.40bb3245.js.map": "/static/js/runtime-options.40bb3245.bundle.js.map",
+    "background.js": "/background.js",
+    "favicon.ico": "/favicon.ico",
+    "icon16_blue.png": "/icon16_blue.png",
+    "icon16_green.png": "/icon16_green.png",
+    "icon48.png": "/icon48.png",
+    "index.html": "/index.html",
+    "logo192.png": "/logo192.png",
+    "logo512.png": "/logo512.png",
+    "manifest.json": "/manifest.json",
+    "popup.html": "/popup.html",
+    "property_power_blue.png": "/property_power_blue.png",
+    "property_power_green.png": "/property_power_green.png",
+    "robots.txt": "/robots.txt",
+    "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bundle.js",
+    "static/js/0.chunk.js",
+    "static/js/main.chunk.js"
+  ]
+}
