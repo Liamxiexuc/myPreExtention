@@ -1,7 +1,8 @@
 const {
   override,
   overrideDevServer,
-  addWebpackPlugin
+  addWebpackPlugin,
+  addDecoratorsLegacy
 } = require("customize-cra");
 const paths = require('react-scripts/config/paths');
 const CopyPlugin = require('copy-webpack-plugin');
@@ -45,7 +46,8 @@ module.exports = {
     addWebpackPlugin(
       copyPlugin
     ),
-    multipleEntry.addMultiEntry,
+    addDecoratorsLegacy(),
+    multipleEntry.addMultiEntry
   ),
   devServer: overrideDevServer(
     devServerConfig()

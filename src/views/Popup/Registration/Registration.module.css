@@ -1,0 +1,10 @@
+.register {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  height: 30px;
+  margin-bottom: 8px;
+  padding: 8px;
+}
