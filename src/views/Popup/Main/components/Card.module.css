@@ -1,0 +1,11 @@
+.title {
+  padding: 10px 8px;
+  background-color: rgb(224, 222, 222);
+  margin: 0;
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.content {
+  padding: 12px;
+}
