@@ -5,6 +5,7 @@
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
+  border-bottom: 1px solid grey;
 }
 .content {
   padding: 12px;

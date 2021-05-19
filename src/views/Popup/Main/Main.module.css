@@ -10,3 +10,6 @@
 .container {
   border: 1px solid grey;
 }
+.container div:last-child h5 {
+  border-bottom: none;
+}

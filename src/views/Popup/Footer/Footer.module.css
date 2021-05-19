@@ -3,3 +3,6 @@
   flex-direction: row-reverse;
   padding: 12px 20px;
 }
+.btn {
+  cursor: pointer;
+}
