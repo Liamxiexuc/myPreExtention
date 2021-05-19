@@ -50,7 +50,6 @@ const mockData = [
 
 const Main = () => {
   const [active, setActive] = useState(null);
-  console.log(active);
 
   return (
     <main className={styles.main}>

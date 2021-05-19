@@ -4,8 +4,14 @@ import styles from './Card.module.css';
 
 const Card = ({ title, data, active, setActive }) => {
   const handleClick = () => {
-    setActive(title);
+    if (!active) {
+      setActive(title);
+    } else {
+      setActive(null);
+    }
   }
+
+  const wrapperStyle = title === active ? `${styles.wrapper} ${styles.active}` : styles.wrapper;
 
   const Content = title === active ? (
     <div className={styles.content}>
@@ -18,7 +24,9 @@ const Card = ({ title, data, active, setActive }) => {
   return (
     <div className={styles.card}>
       <h5 className={styles.title} onClick={handleClick}>{title}</h5>
-      {Content}
+      <div className={wrapperStyle}>
+        {Content}
+      </div>
     </div>
   )
 }
