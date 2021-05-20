@@ -13,3 +13,11 @@
 .container div:last-child h5 {
   border-bottom: none;
 }
+
+.unauthedContainer {
+  display: flex;
+  flex-direction: column;
+}
+.unauthedContainer a {
+  margin-top: 24px;
+}

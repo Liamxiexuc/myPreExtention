@@ -13,7 +13,7 @@ import Property from './Property';
 
 import styles from './App.module.css';
 
-function App({ isPropertyPage}) {
+function App({ isPropertyPage }) {
 
   const homeComponent = !isPropertyPage ? Welcome : Property;
   return (
