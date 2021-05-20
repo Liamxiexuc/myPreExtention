@@ -1,52 +1,52 @@
 import React, { useState } from 'react';
-import Card from './components/Card.jsx'
+import Card from './components/Card.jsx';
 import styles from './Property.module.css';
 
 const data = [
   {
     title: 'Address',
-    value: '20/74 SANDY BAY RD, BATTERY POINT TAS'
+    value: '20/74 SANDY BAY RD, BATTERY POINT TAS',
   },
   {
     title: 'Appraised Yield',
-    value: ' - '
+    value: ' - ',
   },
   {
     title: 'Estimated Sale Price',
-    value: ' - '
+    value: ' - ',
   },
   {
     title: 'Days On Market',
-    value: ' - '
+    value: ' - ',
   },
   {
     title: 'Discounting',
-    value: ' - '
+    value: ' - ',
   },
   {
     title: 'Vendor Distress',
-    value: ' - '
-  }
-]
+    value: ' - ',
+  },
+];
 
 const mockData = [
   {
     title: 'Property Intelligence',
-    data
+    data,
   },
   {
     title: 'Street Intelligence',
-    data
+    data,
   },
   {
     title: 'Suburb Intelligence',
-    data
+    data,
   },
   {
     title: 'LGA Intelligence',
-    data
-  }
-]
+    data,
+  },
+];
 
 const Authed = () => {
   const [active, setActive] = useState(null);
@@ -55,12 +55,18 @@ const Authed = () => {
     <main className={styles.property}>
       <h2 className={styles.title}>ADDRESS</h2>
       <section className={styles.container}>
-        {mockData.map(i => (
-          <Card key={i.title} title={i.title} data={i.data} active={active} setActive={setActive} />
+        {mockData.map((i) => (
+          <Card
+            key={i.title}
+            title={i.title}
+            data={i.data}
+            active={active}
+            setActive={setActive}
+          />
         ))}
       </section>
     </main>
-  )
-}
+  );
+};
 
 export default Authed;

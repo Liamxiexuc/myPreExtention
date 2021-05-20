@@ -8,46 +8,46 @@ export default function formCreate(Cmp) {
       this.state = {};
       this.options = {};
     }
-    handleChange = e => {
+    handleChange = (e) => {
       let { name, value } = e.target;
       this.setState({ [name]: value });
     };
     getFieldDecorator = (field, option) => {
       this.options[field] = option;
-      return InputCmp => {
+      return (InputCmp) => {
         return React.cloneElement(InputCmp, {
           name: field,
-          value: this.state[field] || "",
-          onChange: this.handleChange
+          value: this.state[field] || '',
+          onChange: this.handleChange,
         });
       };
     };
     getFieldsValue = () => {
       return { ...this.state };
     };
-    getFieldValue = field => {
+    getFieldValue = (field) => {
       return this.state[field];
     };
-    validateFields = callback => {
+    validateFields = (callback) => {
       const errors = {};
       const state = { ...this.state };
       for (let name in this.options) {
         console.log(this.options);
         console.log(name);
         if (state[name] === undefined) {
-          errors[name] = "error";
+          errors[name] = 'error';
         }
         switch (name) {
           case 'name':
             const error = !isEmailValid(state[name]);
-            console.log(error)
+            console.log(error);
             break;
 
           default:
             break;
         }
       }
-      if (JSON.stringify(errors) === "{}") {
+      if (JSON.stringify(errors) === '{}') {
         callback(undefined, state);
       } else {
         callback(errors, state);

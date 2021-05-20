@@ -5,12 +5,8 @@ import styles from './Dashboard.module.css';
 function Dashboard() {
   return (
     <div className={styles.dashboard}>
-      <h1>
-        Welcome XXX && Dashboard Page
-      </h1>
-      <Link to='/invite'>
-        Invite Another Power User
-      </Link>
+      <h1>Welcome XXX && Dashboard Page</h1>
+      <Link to="/invite">Invite Another Power User</Link>
       <h3>Your Previous Properties</h3>
       <ul>
         <li>123 Smith street ...</li>

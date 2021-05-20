@@ -7,12 +7,11 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "lint": "eslint .",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
+    "lint:fix": "eslint . --fix",
+    "prettier:write": "prettier . --write",
+    "eject": "react-scripts eject",
+    "prettier:check": "prettier --config .prettierrc --check \"src/**/*.{js,css,jsx}\"",
+    "format": "prettier-eslint --eslint-config-path ./.eslintrc.json --write '**/*.{js,css,jsx}'"
   },
   "browserslist": {
     "production": [
@@ -25,6 +24,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -42,6 +50,11 @@
     "@babel/plugin-proposal-decorators": "^7.8.3",
     "copy-webpack-plugin": "^6.0.3",
     "customize-cra": "^1.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.0",
     "react-app-rewire-multiple-entry": "^2.2.0",
     "react-app-rewired": "^2.1.6"
   }

@@ -12,18 +12,17 @@ import Property from './Property';
 import styles from './App.module.css';
 
 function App({ isPropertyPage }) {
-
   const homeComponent = !isPropertyPage ? Welcome : Property;
   return (
     <div className={styles.app}>
       <Switch>
-        <Route exact path='/' component={homeComponent} />
-        <Route exact path='/registration' component={Registration} />
-        <Route exact path='/confirm' component={Confirm} />
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/dashboard' component={Dashboard} />
-        <Route exact path='/invite' component={Invite} />
-        <Route exact path='/afterInvite' component={AfterInvite} />
+        <Route exact path="/" component={homeComponent} />
+        <Route exact path="/registration" component={Registration} />
+        <Route exact path="/confirm" component={Confirm} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/invite" component={Invite} />
+        <Route exact path="/afterInvite" component={AfterInvite} />
       </Switch>
     </div>
   );

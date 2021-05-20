@@ -9,13 +9,9 @@ function Welcome() {
       <Layout>
         <div className={styles.welcome}>
           <h1>Welcome Page && This is not a property page</h1>
-          <Link to='/registration'>
-                Join Waitlist
-          </Link>
-          <a href='https//www.google.com'> Join Group</a>
-          <Link to='/login'>
-            LOGIN
-          </Link>
+          <Link to="/registration">Join Waitlist</Link>
+          <a href="https//www.google.com"> Join Group</a>
+          <Link to="/login">LOGIN</Link>
         </div>
       </Layout>
     </React.Fragment>

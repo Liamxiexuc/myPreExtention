@@ -7,13 +7,9 @@ function Confirm() {
   return (
     <Layout>
       <div className={styles.confirm}>
-        <h1>
-          Waitlist confirm Page
-      </h1>
-        <a href='https//www.google.com'> Join Group</a>
-        <Link to='/login'>
-          LOGIN
-      </Link>
+        <h1>Waitlist confirm Page</h1>
+        <a href="https//www.google.com"> Join Group</a>
+        <Link to="/login">LOGIN</Link>
       </div>
     </Layout>
   );
