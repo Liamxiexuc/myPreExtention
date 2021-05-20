@@ -1,0 +1,10 @@
+.welcome {
+  height: 350px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome a {
+  margin-top: 20px;
+}

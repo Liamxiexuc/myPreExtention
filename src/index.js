@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { MemoryRouter } from "react-router";
 
 import App from './views/Popup/App';
 import 'normalize.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

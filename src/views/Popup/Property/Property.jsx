@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Card from './components/Card.jsx'
-import styles from './Main.module.css';
+import styles from './Property.module.css';
 
 const data = [
   {
@@ -48,11 +48,11 @@ const mockData = [
   }
 ]
 
-const Main = () => {
+const Property = () => {
   const [active, setActive] = useState(null);
 
   return (
-    <main className={styles.main}>
+    <main className={styles.property}>
       <h2 className={styles.title}>ADDRESS</h2>
       <section className={styles.container}>
         {mockData.map(i => (
@@ -64,4 +64,4 @@ const Main = () => {
 }
 
 
-export default Main;
+export default Property;

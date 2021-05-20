@@ -1,12 +1,13 @@
 import React, { Component } from "react";
+import { Redirect, Link } from 'react-router-dom';
 import formCreate from "../components/formCreate.js";
-import styles from './Registration.module.css';
+import styles from './Login.module.css';
 
 const nameRules = { required: true, message: "please input ur name" };
 const passwordRules = { required: true, message: "please input ur password" };
 
 @formCreate
-class Registration extends Component {
+class Login extends Component {
   submit = () => {
     const { getFieldsValue, getFieldValue, validateFields } = this.props;
     validateFields((err, values) => {
@@ -18,21 +19,18 @@ class Registration extends Component {
     });
 
     // TODO for router demo
-    this.props.history.push('/confirm');
+    this.props.history.push('/dashboard');
   };
   render() {
     const { getFieldDecorator } = this.props;
     return (
-      <div className={styles.register}>
-        <h3>Waitlist Page - Registration</h3>
+      <div className={styles.login}>
+        <h3>Login Page</h3>
         {getFieldDecorator("name", { rules: [nameRules] })(
-          <input className={styles.input} type="text" placeholder="please input ur first name" />
+          <input className={styles.input} type="text" placeholder="please input ur name" />
         )}
-        {getFieldDecorator("password", { rules: [nameRules] })(
-          <input className={styles.input} type="text" placeholder="please input ur last name" />
-        )}
-        {getFieldDecorator("email", { rules: [passwordRules] })(
-          <input className={styles.input} type="email" placeholder="please input ur email" />
+        {getFieldDecorator("password", { rules: [passwordRules] })(
+          <input className={styles.input} type="password" placeholder="please input ur password" />
         )}
         <button className={styles.btn} onClick={this.submit}>Submit</button>
       </div>
@@ -40,4 +38,4 @@ class Registration extends Component {
   }
 }
 
-export default Registration;
+export default Login;

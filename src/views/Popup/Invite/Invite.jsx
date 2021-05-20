@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import formCreate from "../components/formCreate.js";
-import styles from './Registration.module.css';
+import styles from './Invite.module.css';
 
 const nameRules = { required: true, message: "please input ur name" };
 const passwordRules = { required: true, message: "please input ur password" };
 
 @formCreate
-class Registration extends Component {
+class Invite extends Component {
   submit = () => {
     const { getFieldsValue, getFieldValue, validateFields } = this.props;
     validateFields((err, values) => {
@@ -18,26 +18,26 @@ class Registration extends Component {
     });
 
     // TODO for router demo
-    this.props.history.push('/confirm');
+    this.props.history.push('/afterInvite');
   };
   render() {
     const { getFieldDecorator } = this.props;
     return (
-      <div className={styles.register}>
-        <h3>Waitlist Page - Registration</h3>
+      <div className={styles.invite}>
+        <h3>Invite Page - Invite other "power" users</h3>
         {getFieldDecorator("name", { rules: [nameRules] })(
-          <input className={styles.input} type="text" placeholder="please input ur first name" />
+          <input className={styles.input} type="email" placeholder="please input ur first email" />
         )}
         {getFieldDecorator("password", { rules: [nameRules] })(
-          <input className={styles.input} type="text" placeholder="please input ur last name" />
+          <input className={styles.input} type="email" placeholder="please input ur last email" />
         )}
         {getFieldDecorator("email", { rules: [passwordRules] })(
           <input className={styles.input} type="email" placeholder="please input ur email" />
         )}
-        <button className={styles.btn} onClick={this.submit}>Submit</button>
+        <button className={styles.btn} onClick={this.submit}>Send Invitations</button>
       </div>
     );
   }
 }
 
-export default Registration;
+export default Invite;

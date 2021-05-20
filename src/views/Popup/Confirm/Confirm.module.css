@@ -1,0 +1,10 @@
+.confirm {
+  height: 350px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.confirm a {
+  margin-top: 20px;
+}

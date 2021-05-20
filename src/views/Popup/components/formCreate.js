@@ -49,6 +49,7 @@ export default function formCreate(Cmp) {
             getFieldsValue={this.getFieldsValue}
             getFieldValue={this.getFieldValue}
             validateFields={this.validateFields}
+            {...this.props}
           />
         </div>
       );

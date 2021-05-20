@@ -1,17 +1,29 @@
 import React from 'react';
-import Header from './Header';
-import Main from './Main';
+import Header from './components/Header';
+import Main from './Property';
+import Footer from './components/Footer'
+import { Route, Switch } from "react-router";
+import Welcome from './Welcome';
 import Registration from './Registration';
-import Footer from './Footer'
+import Confirm from './Confirm';
+import Login from './Login';
+import Dashboard from './Dashboard';
+import Invite from './Invite';
+import AfterInvite from './AfterInvite';
 import styles from './App.module.css';
 
 function App() {
   return (
     <div className={styles.app}>
-      <Header />
-      {/* <Main /> */}
-      <Registration />
-      <Footer />
+      <Switch>
+        <Route exact path='/' component={Welcome} />
+        <Route exact path='/registration' component={Registration} />
+        <Route exact path='/confirm' component={Confirm} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/dashboard' component={Dashboard} />
+        <Route exact path='/invite' component={Invite} />
+        <Route exact path='/afterInvite' component={AfterInvite} />
+      </Switch>
     </div>
   );
 }
