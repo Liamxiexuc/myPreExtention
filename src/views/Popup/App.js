@@ -1,7 +1,5 @@
 import React from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer'
-import { Route, Switch } from "react-router";
+import { Route, Switch } from 'react-router';
 import Welcome from './Welcome';
 import Registration from './Registration';
 import Confirm from './Confirm';
