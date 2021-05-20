@@ -7,6 +7,8 @@ import { MemoryRouter } from "react-router";
 import App from './views/Popup/App';
 import 'normalize.css';
 
+console.log(chrome);
+
 chrome.tabs.query({ active: true, currentWindow: true }, function (tab) {
   //Get Url Before render, and pass it to router
   let isPropertyPage = false;

@@ -19,7 +19,7 @@ class Login extends Component {
     });
 
     // TODO for router demo
-    this.props.history.push('/dashboard');
+    //this.props.history.push('/dashboard');
   };
   render() {
     const { getFieldDecorator } = this.props;

@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import { isEmailValid } from '../../../utils/regex.js';
 
 export default function formCreate(Cmp) {
   return class extends Component {
@@ -31,8 +32,19 @@ export default function formCreate(Cmp) {
       const errors = {};
       const state = { ...this.state };
       for (let name in this.options) {
+        console.log(this.options);
+        console.log(name);
         if (state[name] === undefined) {
           errors[name] = "error";
+        }
+        switch (name) {
+          case 'name':
+            const error = !isEmailValid(state[name]);
+            console.log(error)
+            break;
+
+          default:
+            break;
         }
       }
       if (JSON.stringify(errors) === "{}") {
