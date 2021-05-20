@@ -5,7 +5,7 @@ import styles from './Property.module.css';
 const Unauthed = () => {
 
   return (
-    <main className={styles.property}>
+    <main className={styles.unauthed}>
       <h2 className={styles.title}>ADDRESS</h2>
       <section className={styles.unauthedContainer}>
         <h5>We have loaded XX "POWER" data points for this</h5>
