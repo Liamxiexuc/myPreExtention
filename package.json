@@ -51,7 +51,7 @@
     "customize-cra": "^1.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "husky": "^6.0.0",
+    "husky": "^4.2.3",
     "lint-staged": "^11.0.0",
     "prettier": "^2.3.0",
     "react-app-rewire-multiple-entry": "^2.2.0",
