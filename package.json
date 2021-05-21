@@ -24,14 +24,14 @@
       "last 1 safari version"
     ]
   },
+  "lint-staged": {
+    "*.js": "npm run lint:fix",
+    "*.{js,jsx,css,md}": "npm run prettier:check"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "lint-staged": {
-    "*.js": "npm run lint:fix",
-    "*.{js,jsx,css,md}": "npm run prettier:check"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
