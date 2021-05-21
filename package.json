@@ -7,11 +7,10 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "prettier:write": "prettier . --write",
+    "lint:fix": "eslint . --fix --cache",
     "eject": "react-scripts eject",
     "prettier:check": "prettier --config .prettierrc --check \"src/**/*.{js,css,jsx}\"",
-    "format": "prettier-eslint --eslint-config-path ./.eslintrc.json --write '**/*.{js,css,jsx}'"
+    "prettier:fix": "prettier . --write"
   },
   "browserslist": {
     "production": [
@@ -31,8 +30,8 @@
     }
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
+    "*.js": "npm run lint:fix",
+    "*.{js,jsx,css,md}": "npm run prettier:check"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
