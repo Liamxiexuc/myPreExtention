@@ -1,9 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
 
-const Footer = () => (
+const Footer = ({ btn }) => (
   <footer className={styles.footer}>
-    <span className={styles.btn}>&lt; Back</span>
+    {btn === 'login' ? (
+      <Link className={styles.login} to="/login">
+        Login
+      </Link>
+    ) : (
+      <span className={styles.btn}>&lt; Back</span>
+    )}
   </footer>
 );
 

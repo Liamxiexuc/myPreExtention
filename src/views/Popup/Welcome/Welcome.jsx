@@ -1,12 +1,13 @@
 import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import Layout from '../components/Layout.jsx';
+import Container from '../components/Container';
 import styles from './Welcome.module.css';
 
 function Welcome() {
   return (
     <React.Fragment>
-      <Layout>
+      <Layout btn="login">
         <div className={styles.msg}>
           <div className={styles.left}></div>
           <div className={styles.mid}>
@@ -17,12 +18,20 @@ function Welcome() {
           </div>
           <div className={styles.right}></div>
         </div>
-        <div className={styles.welcome}>
-          <h1>Welcome Page && This is not a property page</h1>
-          <Link to="/registration">Join Waitlist</Link>
-          <a href="https//www.google.com"> Join Group</a>
-          <Link to="/login">LOGIN</Link>
-        </div>
+        <Container title="HOW DO I GET INVITE?">
+          <p className={styles.tips}>
+            BE INVITED BY ANOTHER "POWER" USER
+          </p>
+          <Link className={styles.btn} to="https//www.google.com">
+            Join Group
+          </Link>
+          <div className={styles.divider}>
+            <span>OR</span>
+          </div>
+          <Link className={styles.btn} to="/registration">
+            Join Waitlist
+          </Link>
+        </Container>
       </Layout>
     </React.Fragment>
   );

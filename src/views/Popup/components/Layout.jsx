@@ -6,7 +6,7 @@ const Layout = (props) => (
   <React.Fragment>
     <Header />
     {props.children}
-    <Footer />
+    <Footer btn={props.btn} />
   </React.Fragment>
 );
 
