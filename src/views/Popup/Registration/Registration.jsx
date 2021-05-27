@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import formCreate from '../components/formCreate.js';
 import Layout from '../components/Layout.jsx';
+import Container from '../components/Container';
 import styles from './Registration.module.css';
 
 const nameRules = { required: true, message: 'please input ur name' };
@@ -28,34 +29,62 @@ class Registration extends Component {
   render() {
     const { getFieldDecorator } = this.props;
     return (
-      <Layout>
-        <div className={styles.register}>
-          <h3>Waitlist Page - Registration</h3>
-          {getFieldDecorator('name', { rules: [nameRules] })(
-            <input
-              className={styles.input}
-              type="text"
-              placeholder="please input ur first name"
-            />,
-          )}
-          {getFieldDecorator('password', { rules: [nameRules] })(
-            <input
-              className={styles.input}
-              type="text"
-              placeholder="please input ur last name"
-            />,
-          )}
-          {getFieldDecorator('email', { rules: [passwordRules] })(
-            <input
-              className={styles.input}
-              type="email"
-              placeholder="please input ur email"
-            />,
-          )}
-          <button className={styles.btn} onClick={this.submit}>
-            Submit
-          </button>
-        </div>
+      <Layout btn="login">
+        <Container title="YOUR NEXT POWER MOVE">
+          <form className={styles.register}>
+            <p className={styles.text}>
+              AS WE ARE STILL TESTING AND IMPROVING THINGS, WE ARE
+              ONLY ALLOWING A LIMITED NUMBER OF "POWER" USERS TO
+              ACCESS OUR SOFTWARE.
+            </p>
+            <p className={styles.text}>
+              PLEASE BE PATIENT - WE WILL BE IN TOUCH VERY SOON.
+            </p>
+            <p className={styles.text}>WE PROMISE.</p>
+            <div className={styles.sole}>
+              <div className={styles.row}>
+                <label className={styles.label}>FIRST NAME</label>
+                {getFieldDecorator('name', { rules: [nameRules] })(
+                  <input
+                    className={styles.input}
+                    type="text"
+                    placeholder="please input ur first name"
+                  />,
+                )}
+              </div>
+              <small className={styles.msg}>error</small>
+            </div>
+            <div className={styles.sole}>
+              <div className={styles.row}>
+                <label className={styles.label}>LAST NAME</label>
+                {getFieldDecorator('name', { rules: [nameRules] })(
+                  <input
+                    className={styles.input}
+                    type="text"
+                    placeholder="please input ur last name"
+                  />,
+                )}
+              </div>
+              <small className={styles.msg}>error</small>
+            </div>
+            <div className={styles.sole}>
+              <div className={styles.row}>
+                <label className={styles.label}>EMAIL</label>
+                {getFieldDecorator('name', { rules: [nameRules] })(
+                  <input
+                    className={styles.input}
+                    type="text"
+                    placeholder="please input ur email"
+                  />,
+                )}
+              </div>
+              <small className={styles.msg}>error</small>
+            </div>
+            <button className={styles.btn} onClick={this.submit}>
+              Submit
+            </button>
+          </form>
+        </Container>
       </Layout>
     );
   }

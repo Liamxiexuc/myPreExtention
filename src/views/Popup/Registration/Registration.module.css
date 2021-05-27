@@ -1,17 +1,41 @@
-.register {
-  display: flex;
-  flex-direction: column;
-  padding: 24px;
+.sole {
+  margin: 8px 0;
 }
-
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.label {
+  font-weight: 600;
+  font-size: 12px;
+}
 .input {
-  height: 30px;
-  margin-bottom: 8px;
-  padding: 8px;
+  color: var(--color-white);
+  width: 190px;
+  height: 24px;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-burgundy);
+}
+::-webkit-input-placeholder {
+  color: var(--color-burgundy);
+}
+.msg {
+  display: flex;
+  flex-direction: row-reverse;
+  color: var(--color-yellow);
 }
 
 .btn {
   margin-top: 12px;
   height: 24px;
   cursor: pointer;
+}
+.text {
+  font-size: 10px;
+  text-align: left;
+  margin: 0;
+  margin-bottom: 12px;
 }
