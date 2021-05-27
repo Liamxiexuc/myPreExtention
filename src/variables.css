@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Paladinscond';
+  src: local('Paladinscond'),
+    url('./assets/fonts/paladinscond.ttf') format('truetype');
+  font-weight: normal;
+}
+
+:root {
+  --color-red: #f62121;
+  --color-burgundy: #7b1111;
+  --color-yellow: #ffe610;
+  --color-white: #ffffff;
+  --color-background: linear-gradient(
+    var(--color-red),
+    var(--color-burgundy)
+  );
+}

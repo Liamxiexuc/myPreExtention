@@ -5,7 +5,9 @@ import ReactDOM from 'react-dom';
 import { MemoryRouter } from 'react-router';
 
 import App from './views/Popup/App';
+import './assets/fonts/paladinscond.ttf';
 import 'normalize.css';
+import './variables.css';
 
 console.log(chrome);
 

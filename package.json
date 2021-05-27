@@ -26,7 +26,7 @@
   },
   "lint-staged": {
     "*.js": "npm run lint:fix",
-    "*.{js,jsx,css,md}": "npm run prettier:check"
+    "*.{js,jsx,css}": "npm run prettier:check"
   },
   "husky": {
     "hooks": {

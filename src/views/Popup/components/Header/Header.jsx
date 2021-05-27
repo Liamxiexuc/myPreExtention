@@ -1,16 +1,16 @@
 import React from 'react';
 import styles from './Header.module.css';
-import logo from '../../../../assets/icon48.png';
+import bannerText from '../../../../assets/banner_text.png';
 
 const Header = () => (
   <header className={styles.header}>
-    <img className={styles.logo} src={logo} alt="logo"></img>
-    <div className={styles.textContainer}>
-      <p className={styles.preTitle}>PROPERTY</p>
-      <h1 className={styles.title}>POWER</h1>
-      <p className={styles.text}>
-        Giving you the numbers the listing left out.
-      </p>
+    <img
+      className={styles.logo}
+      src={bannerText}
+      alt="banner_text"
+    ></img>
+    <div className={styles.betaContainer}>
+      <span className={styles.text}>BETA</span>
     </div>
   </header>
 );

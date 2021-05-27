@@ -7,6 +7,16 @@ function Welcome() {
   return (
     <React.Fragment>
       <Layout>
+        <div className={styles.msg}>
+          <div className={styles.left}></div>
+          <div className={styles.mid}>
+            <p className={styles.text}>as we are stuill in beta...</p>
+            <p className={styles.text}>
+              you must be invited to create an account.
+            </p>
+          </div>
+          <div className={styles.right}></div>
+        </div>
         <div className={styles.welcome}>
           <h1>Welcome Page && This is not a property page</h1>
           <Link to="/registration">Join Waitlist</Link>
