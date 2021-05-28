@@ -1,0 +1,10 @@
+.title {
+  color: var(--color-yellow);
+  font-family: Paladinscond;
+  font-size: 22px;
+  margin: 8px 28px 0;
+  text-align: left;
+}
+.property {
+  padding: 12px 28px;
+}

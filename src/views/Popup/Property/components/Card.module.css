@@ -1,9 +1,8 @@
 .title {
-  padding: 10px 8px;
-  background-color: rgb(224, 222, 222);
+  padding: 12px 12px;
+  background-color: var(--color-burgundy);
   margin: 0;
-  font-size: 12px;
-  text-decoration: underline;
+  font-size: 14px;
   cursor: pointer;
   border-bottom: 1px solid grey;
 }
@@ -15,6 +14,9 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.5s ease;
+  background-color: var(--color-white);
+  color: var(--color-burgundy);
+  font-size: 12px;
 }
 .active {
   transform: translate3d(0, 0, 0);

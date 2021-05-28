@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import Layout from '../components/Layout.jsx';
+import Container from '../components/Container';
 import Card from './components/Card.jsx';
-import styles from './Property.module.css';
+import styles from './Authed.module.css';
 
 const data = [
   {
@@ -52,20 +54,22 @@ const Authed = () => {
   const [active, setActive] = useState(null);
 
   return (
-    <main className={styles.property}>
-      <h2 className={styles.title}>ADDRESS</h2>
-      <section className={styles.container}>
-        {mockData.map((i) => (
-          <Card
-            key={i.title}
-            title={i.title}
-            data={i.data}
-            active={active}
-            setActive={setActive}
-          />
-        ))}
-      </section>
-    </main>
+    <Layout>
+      <h1 className={styles.title}>162 MACQUARIE ST, HOBART</h1>
+      <main className={styles.property}>
+        <section className={styles.container}>
+          {mockData.map((i) => (
+            <Card
+              key={i.title}
+              title={i.title}
+              data={i.data}
+              active={active}
+              setActive={setActive}
+            />
+          ))}
+        </section>
+      </main>
+    </Layout>
   );
 };
 
