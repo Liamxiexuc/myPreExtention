@@ -1,3 +1,6 @@
+.form {
+  margin-top: 6px;
+}
 .sole {
   margin: 8px 0;
 }
@@ -9,6 +12,7 @@
 .label {
   font-weight: 600;
   font-size: 12px;
+  letter-spacing: -1px;
 }
 .input {
   color: var(--color-white);

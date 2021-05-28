@@ -31,22 +31,27 @@ class Registration extends Component {
     return (
       <Layout btn="login">
         <Container title="YOUR NEXT POWER MOVE">
-          <form className={styles.register}>
-            <p className={styles.text}>
-              AS WE ARE STILL TESTING AND IMPROVING THINGS, WE ARE
-              ONLY ALLOWING A LIMITED NUMBER OF "POWER" USERS TO
-              ACCESS OUR SOFTWARE.
-            </p>
-            <p className={styles.text}>
-              PLEASE BE PATIENT - WE WILL BE IN TOUCH VERY SOON.
-            </p>
-            <p className={styles.text}>WE PROMISE.</p>
+          <p className={styles.text}>
+            AS WE ARE STILL TESTING AND IMPROVING THINGS, WE ARE ONLY
+            ALLOWING A LIMITED NUMBER OF "POWER" USERS TO ACCESS OUR
+            SOFTWARE.
+          </p>
+          <p className={styles.text}>
+            PLEASE BE PATIENT - WE WILL BE IN TOUCH VERY SOON.
+          </p>
+          <p className={styles.text}>WE PROMISE.</p>
+          <form className={styles.form}>
             <div className={styles.sole}>
               <div className={styles.row}>
-                <label className={styles.label}>FIRST NAME</label>
-                {getFieldDecorator('name', { rules: [nameRules] })(
+                <label htmlFor="firstName" className={styles.label}>
+                  FIRST NAME
+                </label>
+                {getFieldDecorator('firstName', {
+                  rules: [nameRules],
+                })(
                   <input
                     className={styles.input}
+                    id="firstName"
                     type="text"
                     placeholder="please input ur first name"
                   />,
@@ -56,9 +61,14 @@ class Registration extends Component {
             </div>
             <div className={styles.sole}>
               <div className={styles.row}>
-                <label className={styles.label}>LAST NAME</label>
-                {getFieldDecorator('name', { rules: [nameRules] })(
+                <label htmlFor="lastName" className={styles.label}>
+                  LAST NAME
+                </label>
+                {getFieldDecorator('lastName', {
+                  rules: [nameRules],
+                })(
                   <input
+                    id="lastName"
                     className={styles.input}
                     type="text"
                     placeholder="please input ur last name"
@@ -69,11 +79,14 @@ class Registration extends Component {
             </div>
             <div className={styles.sole}>
               <div className={styles.row}>
-                <label className={styles.label}>EMAIL</label>
-                {getFieldDecorator('name', { rules: [nameRules] })(
+                <label htmlFor="email" className={styles.label}>
+                  EMAIL
+                </label>
+                {getFieldDecorator('email', { rules: [nameRules] })(
                   <input
+                    id="email"
                     className={styles.input}
-                    type="text"
+                    type="email"
                     placeholder="please input ur email"
                   />,
                 )}
