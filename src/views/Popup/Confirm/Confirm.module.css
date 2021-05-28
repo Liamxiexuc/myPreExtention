@@ -1,10 +1,26 @@
-.confirm {
-  height: 200px;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
+.btn {
+  font-family: Paladinscond;
+  text-decoration: none;
+  color: var(--color-white);
+  padding: 12px 0;
+  margin: 0 52px;
+  background: var(--color-burgundy);
+  border-radius: 24px;
+  font-size: 12px;
+  margin-top: 30px;
 }
-
-.confirm a {
-  margin-top: 20px;
+.title {
+  font-family: Paladinscond;
+  margin: 0;
+  font-weight: 500;
+  font-size: 24px;
+  text-align: left;
+  margin-bottom: 12px;
+}
+.text {
+  font-size: 10px;
+  text-align: left;
+  margin: 0;
+  margin-bottom: 12px;
+  line-height: 20px;
 }
