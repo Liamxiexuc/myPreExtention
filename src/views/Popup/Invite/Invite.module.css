@@ -1,17 +1,66 @@
 .invite {
-  padding: 12px;
+  color: var(--color-burgundy);
+  text-align: left;
+  padding: 0 8px;
+}
+
+.title {
+  color: var(--color-yellow);
+  font-family: Paladinscond;
+  font-size: 22px;
+  margin: 8px 24px 0;
+  text-align: left;
+}
+.sole {
+  margin: 8px 0;
+}
+.row {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
-
+.label {
+  color: var(--color-burgundy);
+  font-weight: 600;
+  font-size: 12px;
+}
 .input {
-  height: 30px;
-  margin-bottom: 8px;
-  padding: 8px;
-}
-
-.btn {
-  margin-top: 12px;
+  color: var(--color-burgundy);
+  width: 190px;
   height: 24px;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-burgundy);
+}
+.input::-webkit-input-placeholder {
+  opacity: 0.5;
+  color: var(--color-burgundy);
+}
+.msg {
+  display: flex;
+  flex-direction: row-reverse;
+  color: var(--color-red);
+}
+.btn {
+  font-family: Paladinscond;
+  color: var(--color-white);
+  padding: 14px 24px;
+  background: var(--color-burgundy);
+  border-radius: 24px;
+  font-size: 12px;
+  margin: 16px 40px 12px;
   cursor: pointer;
+  border: none;
+  outline: none;
+}
+.text {
+  color: var(--color-burgundy);
+  font-size: 10px;
+  letter-spacing: -1px;
+  margin: 0;
+  margin-bottom: 8px;
+}
+.form {
+  margin-top: 10px;
 }
