@@ -1,3 +1,18 @@
-.afterInvite {
-  padding: 12px;
+.title {
+  color: var(--color-yellow);
+  font-family: Paladinscond;
+  font-size: 22px;
+  margin: 8px 24px 0;
+  text-align: left;
+}
+.text {
+  color: var(--color-burgundy);
+  font-size: 12px;
+  letter-spacing: -1px;
+  margin: 0;
+  margin-bottom: 8px;
+  text-align: left;
+}
+.img {
+  max-width: 278px;
 }
