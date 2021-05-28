@@ -9,14 +9,29 @@ function Dashboard() {
     <Layout>
       <Container style={{ backgroundColor: 'white' }}>
         <div className={styles.dashboard}>
-          <h1>Welcome XXX && Dashboard Page</h1>
-          <Link to="/invite">Invite Another Power User</Link>
-          <h3>Your Previous Properties</h3>
-          <ul>
-            <li>123 Smith street ...</li>
-            <li>123 Smith street ...</li>
-            <li>123 Smith street ...</li>
+          <h1 className={styles.title}>WELCOME ENGELBERT!</h1>
+          <p className={styles.msg}>
+            UNLOCK THE ADVANCED POWER FEATURES...
+          </p>
+          <Link className={styles.btn} to="/invite">
+            INVITE ANOTHER POWER USER
+          </Link>
+          <h5 className={styles.subtitle}>
+            YOUR PREVIOUS PROPERTIES:
+          </h5>
+          <ul className={styles.list}>
+            <li className={styles.li}>92 REGENT ST, SANDY BAY</li>
+            <li className={styles.li}>162 MACQUARIE ST, HOBART</li>
+            <li className={styles.li}>
+              8 WATERLOO CRESCENT, BATTERY POINT
+            </li>
           </ul>
+          <h5 className={styles.subtitle}>HOW TO USE</h5>
+          <p className={styles.msg}>
+            ONCE LOGGED IN, SIMPLY NAVIGATE TO A REALESTATE.COM.AU
+            LISTING TO LOAD UP ITS POWER DATA... THIS WINDOW WILL
+            UPDATE AUTOMATICALLY.
+          </p>
         </div>
       </Container>
     </Layout>
