@@ -25,13 +25,13 @@ class Login extends Component {
     });
 
     // TODO for router demo
-    //this.props.history.push('/dashboard');
+    this.props.history.push('/dashboard');
   };
   render() {
     const { getFieldDecorator } = this.props;
     return (
       <Layout>
-        <Container bgColor={true}>
+        <Container style={{ backgroundColor: '#ffe610' }}>
           <h1 className={styles.title}>Login</h1>
           <div className={styles.sole}>
             <div className={styles.row}>
