@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
+import Layout from '../components/Layout.jsx';
+import Container from '../components/Container';
 import formCreate from '../components/formCreate.js';
 import styles from './Login.module.css';
 
@@ -28,26 +30,48 @@ class Login extends Component {
   render() {
     const { getFieldDecorator } = this.props;
     return (
-      <div className={styles.login}>
-        <h3>Login Page</h3>
-        {getFieldDecorator('name', { rules: [nameRules] })(
-          <input
-            className={styles.input}
-            type="text"
-            placeholder="please input ur name"
-          />,
-        )}
-        {getFieldDecorator('password', { rules: [passwordRules] })(
-          <input
-            className={styles.input}
-            type="password"
-            placeholder="please input ur password"
-          />,
-        )}
-        <button className={styles.btn} onClick={this.submit}>
-          Submit
-        </button>
-      </div>
+      <Layout>
+        <Container bgColor={true}>
+          <h1 className={styles.title}>Login</h1>
+          <div className={styles.sole}>
+            <div className={styles.row}>
+              <label htmlFor="lastName" className={styles.label}>
+                LAST NAME
+              </label>
+              {getFieldDecorator('lastName', {
+                rules: [nameRules],
+              })(
+                <input
+                  id="lastName"
+                  className={styles.input}
+                  type="text"
+                  placeholder="please input ur last name"
+                />,
+              )}
+            </div>
+            <small className={styles.msg}>error</small>
+          </div>
+          <div className={styles.sole}>
+            <div className={styles.row}>
+              <label htmlFor="email" className={styles.label}>
+                EMAIL
+              </label>
+              {getFieldDecorator('email', { rules: [nameRules] })(
+                <input
+                  id="email"
+                  className={styles.input}
+                  type="email"
+                  placeholder="please input ur email"
+                />,
+              )}
+            </div>
+            <small className={styles.msg}>error</small>
+          </div>
+          <button className={styles.btn} onClick={this.submit}>
+            LOGIN
+          </button>
+        </Container>
+      </Layout>
     );
   }
 }

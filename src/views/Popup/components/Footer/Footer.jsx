@@ -9,7 +9,7 @@ const Footer = ({ btn }) => (
         Login
       </Link>
     ) : (
-      <span className={styles.btn}>&lt; Back</span>
+      <span className={styles.back}>&lt; Back</span>
     )}
   </footer>
 );

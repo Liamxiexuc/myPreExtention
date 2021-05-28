@@ -1,4 +1,4 @@
-.welcome {
+.main {
   padding: 28px 28px 0;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@
   text-align: center;
   position: relative;
 }
-.welcome::after {
+.main::after {
   content: '';
   background-image: url('../../../../assets/lightning.png');
   background-repeat: no-repeat;
@@ -29,4 +29,8 @@
   height: 38px;
   margin: 0 auto;
   margin-top: -18px;
+  z-index: 1;
+}
+.bg {
+  background-color: var(--color-yellow);
 }

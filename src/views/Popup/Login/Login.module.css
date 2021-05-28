@@ -1,17 +1,48 @@
-.login {
+.title {
+  color: var(--color-burgundy);
+  font-family: Paladinscond;
+  font-size: 22px;
+  margin: 0;
+  margin-bottom: 18px;
+  text-align: left;
+}
+.sole {
+  margin: 8px 0;
+}
+.row {
   display: flex;
-  flex-direction: column;
-  padding: 24px;
+  align-items: center;
+  justify-content: space-between;
 }
-
+.label {
+  color: var(--color-burgundy);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: -1px;
+}
 .input {
-  height: 30px;
-  margin-bottom: 8px;
-  padding: 8px;
-}
-
-.btn {
-  margin-top: 12px;
+  color: var(--color-burgundy);
+  width: 190px;
   height: 24px;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-burgundy);
+}
+.msg {
+  display: flex;
+  flex-direction: row-reverse;
+  color: var(--color-yellow);
+}
+.btn {
+  font-family: Paladinscond;
+  color: var(--color-white);
+  padding: 12px 24px;
+  background: var(--color-burgundy);
+  border-radius: 24px;
+  font-size: 12px;
+  margin: 16px 42px;
   cursor: pointer;
+  border: none;
+  outline: none;
 }
