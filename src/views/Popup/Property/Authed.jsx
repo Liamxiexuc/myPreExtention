@@ -6,55 +6,55 @@ import styles from './Authed.module.css';
 
 const data = [
   {
-    title: 'Address',
+    title: 'ADDRESS',
     value: '20/74 SANDY BAY RD, BATTERY POINT TAS',
   },
   {
-    title: 'Appraised Yield',
+    title: 'APPRAISED YIELD',
     value: ' - ',
   },
   {
-    title: 'Estimated Sale Price',
+    title: 'ESTIMATED SALE PRICE',
     value: ' - ',
   },
   {
-    title: 'Days On Market',
+    title: 'DAYS ON MARKET',
     value: ' - ',
   },
   {
-    title: 'Discounting',
+    title: 'DISCOUNTING',
     value: ' - ',
   },
   {
-    title: 'Vendor Distress',
+    title: 'VENDOR DISTRESS',
     value: ' - ',
   },
 ];
 
 const mockData = [
   {
-    title: 'Property Intelligence',
+    title: 'PROPERTY INTELLIGENCE',
     data,
   },
   {
-    title: 'Street Intelligence',
+    title: 'STREET INTELLIGENCE',
     data,
   },
   {
-    title: 'Suburb Intelligence',
+    title: 'SUBURB INTELLIGENCE',
     data,
   },
   {
-    title: 'LGA Intelligence',
+    title: 'LGA INTELLIGENCE',
     data,
   },
 ];
 
 const Authed = () => {
-  const [active, setActive] = useState(null);
+  const [active, setActive] = useState('PROPERTY INTELLIGENCE');
 
   return (
-    <Layout>
+    <Layout lightning={true}>
       <h1 className={styles.title}>162 MACQUARIE ST, HOBART</h1>
       <main className={styles.property}>
         <section className={styles.container}>

@@ -13,6 +13,11 @@ const Card = ({ title, data, active, setActive }) => {
       ? `${styles.wrapper} ${styles.active}`
       : styles.wrapper;
 
+  const titleStyle =
+    title === active
+      ? `${styles.title} ${styles.titleActive}`
+      : styles.title;
+
   const Content =
     title === active ? (
       <div className={styles.content}>
@@ -24,8 +29,9 @@ const Card = ({ title, data, active, setActive }) => {
 
   return (
     <div className={styles.card}>
-      <h5 className={styles.title} onClick={handleClick}>
+      <h5 className={titleStyle} onClick={handleClick}>
         {title}
+        {!(title === active) && <span className={styles.plus}></span>}
       </h5>
       <div className={wrapperStyle}>{Content}</div>
     </div>
