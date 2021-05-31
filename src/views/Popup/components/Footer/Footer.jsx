@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
 
 const Footer = ({ btn, lightning }) => {
-  console.log(lightning);
   const backStyle = lightning
     ? `${styles.back} ${styles.lightning}`
     : styles.back;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import formCreate from '../components/formCreate.js';
 import Layout from '../components/Layout.jsx';
 import Container from '../components/Container';
+import { signup } from '../../../services/auth.js';
 import styles from './Registration.module.css';
 
 const nameRules = { required: true, message: 'please input ur name' };
@@ -12,9 +13,18 @@ const passwordRules = {
 
 @formCreate
 class Registration extends Component {
-  submit = () => {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+    };
+  }
+  submit = async (event) => {
+    event.preventDefault();
+    this.setState({ error: null });
     const { getFieldsValue, getFieldValue, validateFields } =
       this.props;
+    const { error } = this.state;
     validateFields((err, values) => {
       if (err) {
         console.log('err', err); //sy-log
@@ -22,9 +32,13 @@ class Registration extends Component {
         console.log('success', values); //sy-log
       }
     });
-
-    // TODO for router demo
-    this.props.history.push('/confirm');
+    const data = getFieldsValue();
+    try {
+      await signup(data);
+    } catch (error) {
+      return this.setState({ error });
+    }
+    this.props.history.replace('confirm');
   };
   render() {
     const { getFieldDecorator } = this.props;
@@ -57,7 +71,9 @@ class Registration extends Component {
                   />,
                 )}
               </div>
-              <small className={styles.msg}>error</small>
+              {this.state.error && (
+                <small className={styles.msg}>error</small>
+              )}
             </div>
             <div className={styles.sole}>
               <div className={styles.row}>
@@ -75,7 +91,9 @@ class Registration extends Component {
                   />,
                 )}
               </div>
-              <small className={styles.msg}>error</small>
+              {this.state.error && (
+                <small className={styles.msg}>error</small>
+              )}
             </div>
             <div className={styles.sole}>
               <div className={styles.row}>
@@ -91,7 +109,9 @@ class Registration extends Component {
                   />,
                 )}
               </div>
-              <small className={styles.msg}>error</small>
+              {this.state.error && (
+                <small className={styles.msg}>error</small>
+              )}
             </div>
             <button className={styles.btn} onClick={this.submit}>
               Submit
