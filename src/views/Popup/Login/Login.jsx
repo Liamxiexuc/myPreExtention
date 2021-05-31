@@ -3,6 +3,7 @@ import { Redirect, Link } from 'react-router-dom';
 import Layout from '../components/Layout.jsx';
 import Container from '../components/Container';
 import formCreate from '../components/formCreate.js';
+import { login } from '../../../services/auth.js';
 import styles from './Login.module.css';
 
 const nameRules = { required: true, message: 'please input ur name' };
@@ -13,7 +14,15 @@ const passwordRules = {
 
 @formCreate
 class Login extends Component {
-  submit = () => {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+    };
+  }
+  submit = async (event) => {
+    event.preventDefault();
+    this.setState({ error: null });
     const { getFieldsValue, getFieldValue, validateFields } =
       this.props;
     validateFields((err, values) => {
@@ -24,8 +33,16 @@ class Login extends Component {
       }
     });
 
-    // TODO for router demo
-    this.props.history.push('/dashboard');
+    const data = getFieldsValue();
+    try {
+      const res = await login(data);
+      // TODO store token
+      console.log(res);
+      this.props.history.replace('/dashboard');
+    } catch (error) {
+      console.log({ ...error });
+      return this.setState({ error });
+    }
   };
   render() {
     const { getFieldDecorator } = this.props;
@@ -33,24 +50,6 @@ class Login extends Component {
       <Layout>
         <Container style={{ backgroundColor: '#ffe610' }}>
           <h1 className={styles.title}>Login</h1>
-          <div className={styles.sole}>
-            <div className={styles.row}>
-              <label htmlFor="lastName" className={styles.label}>
-                LAST NAME
-              </label>
-              {getFieldDecorator('lastName', {
-                rules: [nameRules],
-              })(
-                <input
-                  id="lastName"
-                  className={styles.input}
-                  type="text"
-                  placeholder="please input ur last name"
-                />,
-              )}
-            </div>
-            <small className={styles.msg}>error</small>
-          </div>
           <div className={styles.sole}>
             <div className={styles.row}>
               <label htmlFor="email" className={styles.label}>
@@ -65,7 +64,29 @@ class Login extends Component {
                 />,
               )}
             </div>
-            <small className={styles.msg}>error</small>
+            {this.state.error && (
+              <small className={styles.msg}>error</small>
+            )}
+          </div>
+          <div className={styles.sole}>
+            <div className={styles.row}>
+              <label htmlFor="password" className={styles.label}>
+                PASSWORD
+              </label>
+              {getFieldDecorator('password', {
+                rules: [nameRules],
+              })(
+                <input
+                  id="password"
+                  className={styles.input}
+                  type="text"
+                  placeholder="please input ur password"
+                />,
+              )}
+            </div>
+            {this.state.error && (
+              <small className={styles.msg}>error</small>
+            )}
           </div>
           <button className={styles.btn} onClick={this.submit}>
             LOGIN
