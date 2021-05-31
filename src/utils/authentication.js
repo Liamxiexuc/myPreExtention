@@ -1,23 +1,34 @@
+/* global chrome */
 import jwt from 'jsonwebtoken';
 
 const JWT_KEY = 'jwt';
 
 export const setToken = (token) => {
-  localStorage.setItem(JWT_KEY, token);
+  chrome.storage.local.set({ jwt: token }, function () {
+    console.log('Value is set to ' + token);
+  });
 };
 
 export const getToken = () => {
-  return localStorage.getItem(JWT_KEY);
+  return new Promise((resolve, reject) => {
+    chrome.storage.local.get([JWT_KEY], function (result) {
+      if (!result) return reject('error');
+      resolve(result);
+    });
+  });
+};
+
+export const fetchToken = async () => {
+  return await getToken();
 };
 
 export const deleteToken = () => {
   localStorage.removeItem(JWT_KEY);
 };
 
-export const fetchUserId = () => {
-  const token = getToken();
-  if (token === null) return 'visitor';
-  const decodedToken = jwt.decode(token);
+export const fetchMemberId = async () => {
+  const token = await getToken();
+  const decodedToken = jwt.decode(token[JWT_KEY]);
   return decodedToken.id;
 };
 

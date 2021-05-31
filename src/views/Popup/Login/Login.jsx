@@ -4,6 +4,7 @@ import Layout from '../components/Layout.jsx';
 import Container from '../components/Container';
 import formCreate from '../components/formCreate.js';
 import { login } from '../../../services/auth.js';
+import { setToken } from '../../../utils/authentication.js';
 import styles from './Login.module.css';
 
 const nameRules = { required: true, message: 'please input ur name' };
@@ -35,9 +36,10 @@ class Login extends Component {
 
     const data = getFieldsValue();
     try {
-      const res = await login(data);
+      const token = await login(data);
       // TODO store token
-      console.log(res);
+      console.log(token);
+      setToken(token);
       this.props.history.replace('/dashboard');
     } catch (error) {
       console.log({ ...error });
