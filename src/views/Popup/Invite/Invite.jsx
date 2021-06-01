@@ -2,29 +2,32 @@ import React, { Component } from 'react';
 import formCreate from '../components/formCreate.js';
 import Layout from '../components/Layout.jsx';
 import Container from '../components/Container';
+import {
+  emailRules,
+  emailFormatRules,
+} from '../../../utils/validation.js';
 import styles from './Invite.module.css';
-
-const nameRules = { required: true, message: 'please input ur name' };
-const passwordRules = {
-  required: true,
-  message: 'please input ur password',
-};
 
 @formCreate
 class Invite extends Component {
-  submit = () => {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+    };
+  }
+  submit = (event) => {
+    event.preventDefault();
+    this.setState({ error: null });
     const { getFieldsValue, getFieldValue, validateFields } =
       this.props;
     validateFields((err, values) => {
-      if (err) {
-        console.log('err', err); //sy-log
-      } else {
-        console.log('success', values); //sy-log
-      }
+      const data = getFieldsValue();
+      const keyLength = Object.keys(data).length;
+      const isEmpty = keyLength > 1 ? false : true;
+      if (err || isEmpty) return;
+      this.props.history.push('/afterInvite');
     });
-
-    // TODO for router demo
-    this.props.history.push('/afterInvite');
   };
   render() {
     const { getFieldDecorator } = this.props;
@@ -47,7 +50,9 @@ class Invite extends Component {
                   <label htmlFor="email" className={styles.label}>
                     EMAIL 1
                   </label>
-                  {getFieldDecorator('email', { rules: [nameRules] })(
+                  {getFieldDecorator('email1', {
+                    rules: [emailRules, emailFormatRules],
+                  })(
                     <input
                       id="email"
                       className={styles.input}
@@ -56,14 +61,15 @@ class Invite extends Component {
                     />,
                   )}
                 </div>
-                <small className={styles.msg}>error</small>
               </div>
               <div className={styles.sole}>
                 <div className={styles.row}>
                   <label htmlFor="email" className={styles.label}>
                     EMAIL 2
                   </label>
-                  {getFieldDecorator('email', { rules: [nameRules] })(
+                  {getFieldDecorator('email2', {
+                    rules: [emailFormatRules],
+                  })(
                     <input
                       id="email"
                       className={styles.input}
@@ -72,14 +78,15 @@ class Invite extends Component {
                     />,
                   )}
                 </div>
-                <small className={styles.msg}>error</small>
               </div>
               <div className={styles.sole}>
                 <div className={styles.row}>
                   <label htmlFor="email" className={styles.label}>
                     EMAIL 3
                   </label>
-                  {getFieldDecorator('email', { rules: [nameRules] })(
+                  {getFieldDecorator('email3', {
+                    rules: [emailFormatRules],
+                  })(
                     <input
                       id="email"
                       className={styles.input}
@@ -88,7 +95,6 @@ class Invite extends Component {
                     />,
                   )}
                 </div>
-                <small className={styles.msg}>error</small>
               </div>
               <button className={styles.btn} onClick={this.submit}>
                 Send Invitations

@@ -45,9 +45,9 @@ export default function formCreate(Cmp) {
     validate = (state) => {
       const errors = {};
       for (let name in this.options) {
-        if (!state[name]) {
-          errors[name] = this.options[name].rules[0].message;
-        } else {
+        const isRequired = !!this.options[name].rules[0]?.required;
+        const isTyped = !!state[name];
+        if (isTyped) {
           const { rules } = this.options[name];
           rules.forEach((i) => {
             // skip required validation as it has been done above
@@ -61,6 +61,8 @@ export default function formCreate(Cmp) {
             }
             // Add more rules handler here
           });
+        } else if (isRequired) {
+          errors[name] = this.options[name].rules[0].message;
         }
       }
       this.setState({ ...state, errors });
