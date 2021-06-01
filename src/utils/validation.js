@@ -8,7 +8,15 @@ export const passwordRules = {
   required: true,
   message: 'please input ur password',
 };
-export const regexRules = {
+export const emailFormatRules = {
   validator: isEmailValid,
   message: 'invalid email format',
+};
+export const firstNameRules = {
+  required: true,
+  message: 'please input ur first name',
+};
+export const lastNameRules = {
+  required: true,
+  message: 'please input ur last name',
 };

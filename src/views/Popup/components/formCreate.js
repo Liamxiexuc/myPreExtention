@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { isEmailValid } from '../../../utils/regex.js';
+import styles from './formCreate.module.css';
 
 export default function formCreate(Cmp) {
   return class extends Component {
@@ -31,7 +31,7 @@ export default function formCreate(Cmp) {
               value: this.state[field] || '',
               onChange: this.handleChange,
             })}
-            <small>{errorMsg}</small>
+            <small className={styles.errorMsg}>{errorMsg}</small>
           </div>
         );
       };

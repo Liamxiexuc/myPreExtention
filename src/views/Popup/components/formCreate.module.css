@@ -1,0 +1,5 @@
+.errorMsg {
+  display: flex;
+  flex-direction: row-reverse;
+  color: var(--color-red);
+}

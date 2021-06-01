@@ -8,7 +8,7 @@ import { setToken } from '../../../utils/authentication.js';
 import {
   emailRules,
   passwordRules,
-  regexRules,
+  emailFormatRules,
 } from '../../../utils/validation.js';
 import styles from './Login.module.css';
 
@@ -23,8 +23,7 @@ class Login extends Component {
   submit = (event) => {
     event.preventDefault();
     this.setState({ error: null });
-    const { getFieldsValue, getFieldValue, validateFields } =
-      this.props;
+    const { getFieldsValue, validateFields } = this.props;
     validateFields(async (err, values) => {
       const data = getFieldsValue();
       const keyLength = Object.keys(data).length;
@@ -56,7 +55,7 @@ class Login extends Component {
               {getFieldDecorator(
                 'email',
                 {
-                  rules: [emailRules, regexRules],
+                  rules: [emailRules, emailFormatRules],
                 },
                 serverErrorMsg,
               )(

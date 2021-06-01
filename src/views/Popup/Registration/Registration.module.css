@@ -26,9 +26,7 @@
 .input::-webkit-input-placeholder {
   color: var(--color-burgundy);
 }
-.msg {
-  display: flex;
-  flex-direction: row-reverse;
+.row small {
   color: var(--color-yellow);
 }
 

@@ -3,45 +3,43 @@ import formCreate from '../components/formCreate.js';
 import Layout from '../components/Layout.jsx';
 import Container from '../components/Container';
 import { signup } from '../../../services/auth.js';
+import {
+  emailRules,
+  emailFormatRules,
+  firstNameRules,
+  lastNameRules,
+} from '../../../utils/validation.js';
 import styles from './Registration.module.css';
-
-const nameRules = { required: true, message: 'please input ur name' };
-const passwordRules = {
-  required: true,
-  message: 'please input ur password',
-};
 
 @formCreate
 class Registration extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: null,
+      error: null, // TODO Maybe remove from state?
     };
   }
   submit = async (event) => {
     event.preventDefault();
     this.setState({ error: null });
-    const { getFieldsValue, getFieldValue, validateFields } =
-      this.props;
-    const { error } = this.state;
-    validateFields((err, values) => {
-      if (err) {
-        console.log('err', err); //sy-log
-      } else {
-        console.log('success', values); //sy-log
+    const { getFieldsValue, validateFields } = this.props;
+    validateFields(async (err, values) => {
+      const data = getFieldsValue();
+      const keyLength = Object.keys(data).length;
+      const isEmpty = keyLength > 1 ? false : true;
+      if (err || isEmpty) return;
+      try {
+        await signup(data);
+        this.props.history.replace('confirm');
+      } catch (error) {
+        return this.setState({ error });
       }
     });
-    const data = getFieldsValue();
-    try {
-      await signup(data);
-    } catch (error) {
-      return this.setState({ error });
-    }
-    this.props.history.replace('confirm');
   };
   render() {
     const { getFieldDecorator } = this.props;
+    const error = { ...this.state.error };
+    const serverErrorMsg = error?.response?.data?.message;
     return (
       <Layout btn="login">
         <Container title="YOUR NEXT POWER MOVE">
@@ -60,9 +58,13 @@ class Registration extends Component {
                 <label htmlFor="firstName" className={styles.label}>
                   FIRST NAME
                 </label>
-                {getFieldDecorator('firstName', {
-                  rules: [nameRules],
-                })(
+                {getFieldDecorator(
+                  'firstName',
+                  {
+                    rules: [firstNameRules],
+                  },
+                  serverErrorMsg,
+                )(
                   <input
                     className={styles.input}
                     id="firstName"
@@ -71,18 +73,19 @@ class Registration extends Component {
                   />,
                 )}
               </div>
-              {this.state.error && (
-                <small className={styles.msg}>error</small>
-              )}
             </div>
             <div className={styles.sole}>
               <div className={styles.row}>
                 <label htmlFor="lastName" className={styles.label}>
                   LAST NAME
                 </label>
-                {getFieldDecorator('lastName', {
-                  rules: [nameRules],
-                })(
+                {getFieldDecorator(
+                  'lastName',
+                  {
+                    rules: [lastNameRules],
+                  },
+                  serverErrorMsg,
+                )(
                   <input
                     id="lastName"
                     className={styles.input}
@@ -91,16 +94,17 @@ class Registration extends Component {
                   />,
                 )}
               </div>
-              {this.state.error && (
-                <small className={styles.msg}>error</small>
-              )}
             </div>
             <div className={styles.sole}>
               <div className={styles.row}>
                 <label htmlFor="email" className={styles.label}>
                   EMAIL
                 </label>
-                {getFieldDecorator('email', { rules: [nameRules] })(
+                {getFieldDecorator(
+                  'email',
+                  { rules: [emailRules, emailFormatRules] },
+                  serverErrorMsg,
+                )(
                   <input
                     id="email"
                     className={styles.input}
@@ -109,11 +113,12 @@ class Registration extends Component {
                   />,
                 )}
               </div>
-              {this.state.error && (
-                <small className={styles.msg}>error</small>
-              )}
             </div>
-            <button className={styles.btn} onClick={this.submit}>
+            <button
+              type="submit"
+              className={styles.btn}
+              onClick={this.submit}
+            >
               Submit
             </button>
           </form>
