@@ -5,21 +5,12 @@ import Container from '../components/Container';
 import formCreate from '../components/formCreate.js';
 import { login } from '../../../services/auth.js';
 import { setToken } from '../../../utils/authentication.js';
-import { isEmailValid } from '../../../utils/regex.js';
+import {
+  emailRules,
+  passwordRules,
+  regexRules,
+} from '../../../utils/validation.js';
 import styles from './Login.module.css';
-
-const emailRules = {
-  required: true,
-  message: 'please input ur email',
-};
-const passwordRules = {
-  required: true,
-  message: 'please input ur password',
-};
-const regexRules = {
-  validator: isEmailValid,
-  message: 'invalid email format',
-};
 
 @formCreate
 class Login extends Component {
@@ -93,7 +84,7 @@ class Login extends Component {
                 <input
                   id="password"
                   className={styles.input}
-                  type="text"
+                  type="password"
                   placeholder="please input ur password"
                 />,
               )}
