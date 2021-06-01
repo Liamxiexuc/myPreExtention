@@ -6,7 +6,7 @@ import styles from './Property.module.css';
 
 const Unauthed = () => {
   return (
-    <Layout>
+    <Layout btn="login">
       <Container style={{ backgroundColor: 'white' }}>
         <main className={styles.unauthed}>
           <h1 className={styles.title}>162 MACQUARIE ST, HOBART</h1>

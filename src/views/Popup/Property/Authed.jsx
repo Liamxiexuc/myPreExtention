@@ -54,7 +54,7 @@ const Authed = () => {
   const [active, setActive] = useState('PROPERTY INTELLIGENCE');
 
   return (
-    <Layout lightning={true}>
+    <Layout lightning={true} logout={true}>
       <h1 className={styles.title}>162 MACQUARIE ST, HOBART</h1>
       <main className={styles.property}>
         <section className={styles.container}>

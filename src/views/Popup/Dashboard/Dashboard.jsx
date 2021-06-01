@@ -26,7 +26,7 @@ function Dashboard() {
   };
 
   return (
-    <Layout>
+    <Layout logout={true}>
       <Container style={{ backgroundColor: 'white' }}>
         <div className={styles.dashboard}>
           <h1 className={styles.title}>WELCOME {name}!</h1>

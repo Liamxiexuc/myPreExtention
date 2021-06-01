@@ -5,12 +5,20 @@ import Container from '../components/Container';
 import formCreate from '../components/formCreate.js';
 import { login } from '../../../services/auth.js';
 import { setToken } from '../../../utils/authentication.js';
+import { isEmailValid } from '../../../utils/regex.js';
 import styles from './Login.module.css';
 
-const nameRules = { required: true, message: 'please input ur name' };
+const emailRules = {
+  required: true,
+  message: 'please input ur email',
+};
 const passwordRules = {
   required: true,
   message: 'please input ur password',
+};
+const regexRules = {
+  validator: isEmailValid,
+  message: 'invalid email format',
 };
 
 @formCreate
@@ -21,33 +29,30 @@ class Login extends Component {
       error: null,
     };
   }
-  submit = async (event) => {
+  submit = (event) => {
     event.preventDefault();
     this.setState({ error: null });
     const { getFieldsValue, getFieldValue, validateFields } =
       this.props;
-    validateFields((err, values) => {
-      if (err) {
-        console.log('err', err); //sy-log
-      } else {
-        console.log('success', values); //sy-log
+    validateFields(async (err, values) => {
+      const data = getFieldsValue();
+      const keyLength = Object.keys(data).length;
+      const isEmpty = keyLength > 1 ? false : true;
+      if (err || isEmpty) return;
+      try {
+        const token = await login(data);
+        setToken(token);
+        this.props.history.replace('/dashboard');
+      } catch (error) {
+        return this.setState({ error });
       }
     });
-
-    const data = getFieldsValue();
-    try {
-      const token = await login(data);
-      // TODO store token
-      console.log(token);
-      setToken(token);
-      this.props.history.replace('/dashboard');
-    } catch (error) {
-      console.log({ ...error });
-      return this.setState({ error });
-    }
   };
   render() {
     const { getFieldDecorator } = this.props;
+    const error = { ...this.state.error };
+    const errorMsg = error?.response?.data?.message;
+
     return (
       <Layout>
         <Container style={{ backgroundColor: '#ffe610' }}>
@@ -57,7 +62,9 @@ class Login extends Component {
               <label htmlFor="email" className={styles.label}>
                 EMAIL
               </label>
-              {getFieldDecorator('email', { rules: [nameRules] })(
+              {getFieldDecorator('email', {
+                rules: [emailRules, regexRules],
+              })(
                 <input
                   id="email"
                   className={styles.input}
@@ -67,7 +74,7 @@ class Login extends Component {
               )}
             </div>
             {this.state.error && (
-              <small className={styles.msg}>error</small>
+              <small className={styles.msg}>{errorMsg}</small>
             )}
           </div>
           <div className={styles.sole}>
@@ -76,7 +83,7 @@ class Login extends Component {
                 PASSWORD
               </label>
               {getFieldDecorator('password', {
-                rules: [nameRules],
+                rules: [passwordRules],
               })(
                 <input
                   id="password"
@@ -87,7 +94,7 @@ class Login extends Component {
               )}
             </div>
             {this.state.error && (
-              <small className={styles.msg}>error</small>
+              <small className={styles.msg}>{errorMsg}</small>
             )}
           </div>
           <button className={styles.btn} onClick={this.submit}>

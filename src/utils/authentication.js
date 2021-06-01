@@ -23,7 +23,7 @@ export const fetchToken = async () => {
 };
 
 export const deleteToken = () => {
-  localStorage.removeItem(JWT_KEY);
+  chrome.storage.local.clear();
 };
 
 export const fetchMemberId = async () => {

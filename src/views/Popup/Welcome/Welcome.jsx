@@ -2,9 +2,20 @@ import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import Layout from '../components/Layout.jsx';
 import Container from '../components/Container';
+import { fetchToken } from '../../../utils/authentication.js';
 import styles from './Welcome.module.css';
 
-function Welcome() {
+function Welcome(props) {
+  const getToken = async () => {
+    const token = await fetchToken();
+    if (JSON.stringify(token) === '{}') {
+      return null;
+    } else {
+      props.history.push('/dashboard');
+    }
+  };
+  getToken();
+
   return (
     <React.Fragment>
       <Layout btn="login">
