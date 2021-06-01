@@ -51,7 +51,7 @@ class Login extends Component {
   render() {
     const { getFieldDecorator } = this.props;
     const error = { ...this.state.error };
-    const errorMsg = error?.response?.data?.message;
+    const serverErrorMsg = error?.response?.data?.message;
 
     return (
       <Layout>
@@ -62,9 +62,13 @@ class Login extends Component {
               <label htmlFor="email" className={styles.label}>
                 EMAIL
               </label>
-              {getFieldDecorator('email', {
-                rules: [emailRules, regexRules],
-              })(
+              {getFieldDecorator(
+                'email',
+                {
+                  rules: [emailRules, regexRules],
+                },
+                serverErrorMsg,
+              )(
                 <input
                   id="email"
                   className={styles.input}
@@ -73,18 +77,19 @@ class Login extends Component {
                 />,
               )}
             </div>
-            {this.state.error && (
-              <small className={styles.msg}>{errorMsg}</small>
-            )}
           </div>
           <div className={styles.sole}>
             <div className={styles.row}>
               <label htmlFor="password" className={styles.label}>
                 PASSWORD
               </label>
-              {getFieldDecorator('password', {
-                rules: [passwordRules],
-              })(
+              {getFieldDecorator(
+                'password',
+                {
+                  rules: [passwordRules],
+                },
+                serverErrorMsg,
+              )(
                 <input
                   id="password"
                   className={styles.input}
@@ -93,9 +98,6 @@ class Login extends Component {
                 />,
               )}
             </div>
-            {this.state.error && (
-              <small className={styles.msg}>{errorMsg}</small>
-            )}
           </div>
           <button className={styles.btn} onClick={this.submit}>
             LOGIN

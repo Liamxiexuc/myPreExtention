@@ -17,12 +17,12 @@ export default function formCreate(Cmp) {
         ...this.state,
         [name]: value,
       });
-      /*       this.setState({ [name]: value }, () => {
-        this.validate();
-      }); */
     };
-    getFieldDecorator = (field, option) => {
+    getFieldDecorator = (field, option, serverErrorMsg) => {
       this.options[field] = option;
+      const errorMsg = serverErrorMsg
+        ? serverErrorMsg
+        : this.state.errors[field];
       return (InputCmp) => {
         return (
           <div>
@@ -31,7 +31,7 @@ export default function formCreate(Cmp) {
               value: this.state[field] || '',
               onChange: this.handleChange,
             })}
-            <small>{this.state.errors[field]}</small>
+            <small>{errorMsg}</small>
           </div>
         );
       };
