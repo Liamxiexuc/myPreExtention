@@ -9,6 +9,7 @@ export const getContent = () => {
           tabs[0].id,
           { type: 'getProperty' },
           function (property) {
+            console.log(property);
             if (!property) return reject('error');
             resolve(property);
           },

@@ -15,6 +15,15 @@ const getProperty = () => {
     '.property-info__property-type',
   ).innerHTML;
 
+  const geoStyle = document
+    .querySelector('.static-map__img')
+    ?.getAttribute('style');
+  let geoData = geoStyle.split('%7C')[1];
+  geoData = geoData.split('&')[0];
+  geoData = geoData.split('%2C');
+  const lat = geoData[0];
+  const lng = geoData[1];
+
   return {
     address,
     suburb,
@@ -22,8 +31,19 @@ const getProperty = () => {
     postcode,
     url,
     propertyType,
+    lat,
+    lng,
   };
 };
+let property = {};
+
+/**
+ * Wait 1s to make sure get geo data from dom
+ * Geo data dom is generate from page script(async fn)
+ */
+setTimeout(() => {
+  property = getProperty();
+}, 1000);
 
 chrome.runtime.onMessage.addListener(function (
   message,
@@ -32,7 +52,6 @@ chrome.runtime.onMessage.addListener(function (
 ) {
   switch (message.type) {
     case 'getProperty':
-      const property = getProperty();
       sendResponse(property);
       break;
     default:
