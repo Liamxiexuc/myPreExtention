@@ -1,23 +1,11 @@
 /* global chrome */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../components/Layout.jsx';
 import Container from '../components/Container';
-import { getContent } from '../../../utils/content.js';
 import styles from './Property.module.css';
 
-const Unauthed = () => {
-  const [data, setData] = useState({});
-
-  useEffect(() => {
-    const fetchProperty = async () => {
-      const property = await getContent();
-      setData(property);
-    };
-
-    fetchProperty();
-  }, []);
-
+const Unauthed = ({ data }) => {
   return (
     <Layout btn="login">
       <Container style={{ backgroundColor: 'white' }}>

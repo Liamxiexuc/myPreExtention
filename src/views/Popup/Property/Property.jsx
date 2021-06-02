@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Authed from './Authed';
 import Unauthed from './Unauthed';
 import { fetchToken } from '../../../utils/authentication.js';
-import Layout from '../components/Layout.jsx';
-import styles from './Property.module.css';
+import { getContent } from '../../../utils/content.js';
 
 const Property = (props) => {
   const [token, setToken] = useState(false);
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    const fetchProperty = async () => {
+      const property = await getContent();
+      setData(property);
+    };
+
+    fetchProperty();
+  }, []);
+
   const getToken = async () => {
     const token = await fetchToken();
     if (JSON.stringify(token) === '{}') {
@@ -18,7 +28,7 @@ const Property = (props) => {
   getToken();
   const View = token ? Authed : Unauthed;
 
-  return <View />;
+  return <View data={data} />;
 };
 
 export default Property;

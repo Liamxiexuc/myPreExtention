@@ -50,12 +50,14 @@ const mockData = [
   },
 ];
 
-const Authed = () => {
+const Authed = ({ data }) => {
   const [active, setActive] = useState('PROPERTY INTELLIGENCE');
 
   return (
     <Layout lightning={true} logout={true}>
-      <h1 className={styles.title}>162 MACQUARIE ST, HOBART</h1>
+      <h1
+        className={styles.title}
+      >{`${data.address}, ${data.suburb}`}</h1>
       <main className={styles.property}>
         <section className={styles.container}>
           {mockData.map((i) => (
