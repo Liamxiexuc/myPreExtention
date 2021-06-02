@@ -64,7 +64,7 @@ const Authed = (props) => {
 
     getPropertyData();
   }, []);
-
+  console.log(propertyData);
   return (
     <Layout lightning={true} logout={true}>
       <h1

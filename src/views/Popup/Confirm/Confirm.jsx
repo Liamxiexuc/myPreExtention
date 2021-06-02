@@ -1,3 +1,4 @@
+/* global chrome */
 import React from 'react';
 import Layout from '../components/Layout.jsx';
 import Container from '../components/Container';
