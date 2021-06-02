@@ -37,6 +37,7 @@ const copyPlugin = new CopyPlugin({
     // copy assets
     { from: 'public', to: '' },
     { from: 'src/background.js', to: '' },
+    { from: 'src/contentScript.js', to: '' },
   ],
 });
 

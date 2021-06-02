@@ -1,15 +1,30 @@
-import React, { useState } from 'react';
+/* global chrome */
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../components/Layout.jsx';
 import Container from '../components/Container';
+import { getContent } from '../../../utils/content.js';
 import styles from './Property.module.css';
 
 const Unauthed = () => {
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    const fetchProperty = async () => {
+      const property = await getContent();
+      setData(property);
+    };
+
+    fetchProperty();
+  }, []);
+
   return (
     <Layout btn="login">
       <Container style={{ backgroundColor: 'white' }}>
         <main className={styles.unauthed}>
-          <h1 className={styles.title}>162 MACQUARIE ST, HOBART</h1>
+          <h1
+            className={styles.title}
+          >{`${data.address}, ${data.suburb}`}</h1>
           <p className={styles.msg}>
             We have loaded XX "POWER" data points for this
           </p>

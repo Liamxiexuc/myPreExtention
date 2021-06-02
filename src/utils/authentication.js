@@ -4,9 +4,7 @@ import jwt from 'jsonwebtoken';
 const JWT_KEY = 'jwt';
 
 export const setToken = (token) => {
-  chrome.storage.local.set({ jwt: token }, function () {
-    console.log('Value is set to ' + token);
-  });
+  chrome.storage.local.set({ jwt: token });
 };
 
 export const getToken = () => {
