@@ -58,13 +58,9 @@ class Registration extends Component {
                 <label htmlFor="firstName" className={styles.label}>
                   FIRST NAME
                 </label>
-                {getFieldDecorator(
-                  'firstName',
-                  {
-                    rules: [firstNameRules],
-                  },
-                  serverErrorMsg,
-                )(
+                {getFieldDecorator('firstName', {
+                  rules: [firstNameRules],
+                })(
                   <input
                     className={styles.input}
                     id="firstName"
@@ -79,13 +75,9 @@ class Registration extends Component {
                 <label htmlFor="lastName" className={styles.label}>
                   LAST NAME
                 </label>
-                {getFieldDecorator(
-                  'lastName',
-                  {
-                    rules: [lastNameRules],
-                  },
-                  serverErrorMsg,
-                )(
+                {getFieldDecorator('lastName', {
+                  rules: [lastNameRules],
+                })(
                   <input
                     id="lastName"
                     className={styles.input}

@@ -25,6 +25,12 @@ const Property = (props) => {
     }
   };
 
+  const handleClick = () => {
+    chrome.tabs.create({
+      url: 'https://www.facebook.com/groups/highperformancepropertyinvestment',
+    });
+  };
+
   useEffect(() => {
     const fetchProperty = async () => {
       const propertyInfo = await getPropertyInfo();
@@ -50,7 +56,13 @@ const Property = (props) => {
               LOGIN
             </Link>
             <span>OR</span>
-            <Link className={styles.link}>GET AN INVITE</Link>
+            <Link
+              onClick={handleClick}
+              className={styles.link}
+              to="#"
+            >
+              GET AN INVITE
+            </Link>
             <span>TO VIEW</span>
           </p>
           <Link className={styles.btn} to="/login">

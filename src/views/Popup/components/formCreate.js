@@ -21,8 +21,9 @@ export default function formCreate(Cmp) {
     getFieldDecorator = (field, option, serverErrorMsg) => {
       this.options[field] = option;
       const errorMsg = serverErrorMsg
-        ? serverErrorMsg
+        ? serverErrorMsg.split(':')[2]
         : this.state.errors[field];
+
       return (InputCmp) => {
         return (
           <div>

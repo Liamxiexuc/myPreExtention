@@ -5,6 +5,11 @@ import { Link } from 'react-router-dom';
 import styles from './Confirm.module.css';
 
 function Confirm() {
+  const handleClick = () => {
+    chrome.tabs.create({
+      url: 'https://www.facebook.com/groups/highperformancepropertyinvestment',
+    });
+  };
   return (
     <Layout btn="login">
       <Container title="YOUR NEXT POWER MOVE">
@@ -17,7 +22,7 @@ function Confirm() {
           YOU A "POWER" INVITE.
         </p>
         <p className={styles.text}>SIMPLE.</p>
-        <Link className={styles.btn} to="/login">
+        <Link onClick={handleClick} className={styles.btn} to="#">
           TAKE ME TO THE FACEBOOK GROUP
         </Link>
       </Container>
