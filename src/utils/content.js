@@ -1,6 +1,6 @@
 /* global chrome */
 
-export const getContent = () => {
+export const getPropertyInfo = () => {
   return new Promise((resolve, reject) => {
     chrome.tabs.query(
       { active: true, currentWindow: true },
@@ -9,7 +9,6 @@ export const getContent = () => {
           tabs[0].id,
           { type: 'getProperty' },
           function (property) {
-            console.log(property);
             if (!property) return reject('error');
             resolve(property);
           },

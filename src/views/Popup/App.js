@@ -8,6 +8,7 @@ import Dashboard from './Dashboard';
 import Invite from './Invite';
 import AfterInvite from './AfterInvite';
 import Property from './Property';
+import Authed from './Property/Authed.jsx';
 
 import styles from './App.module.css';
 
@@ -23,6 +24,7 @@ function App({ isPropertyPage }) {
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/invite" component={Invite} />
         <Route exact path="/afterInvite" component={AfterInvite} />
+        <Route exact path="/authed" component={Authed} />
       </Switch>
     </div>
   );

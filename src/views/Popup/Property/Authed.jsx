@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout.jsx';
 import Container from '../components/Container';
 import Card from './components/Card.jsx';
+import { sendProperty } from '../../../utils/property.js';
 import styles from './Authed.module.css';
 
 const data = [
@@ -50,14 +51,25 @@ const mockData = [
   },
 ];
 
-const Authed = ({ data }) => {
+const Authed = (props) => {
   const [active, setActive] = useState('PROPERTY INTELLIGENCE');
+  const [propertyData, setPropertyData] = useState({});
+  const { propertyInfo } = props.location.state;
+
+  useEffect(() => {
+    const getPropertyData = async () => {
+      const propertyData = await sendProperty(propertyInfo);
+      setPropertyData(propertyData);
+    };
+
+    getPropertyData();
+  }, []);
 
   return (
     <Layout lightning={true} logout={true}>
       <h1
         className={styles.title}
-      >{`${data.address}, ${data.suburb}`}</h1>
+      >{`${propertyInfo.address}, ${propertyInfo.suburb}`}</h1>
       <main className={styles.property}>
         <section className={styles.container}>
           {mockData.map((i) => (
