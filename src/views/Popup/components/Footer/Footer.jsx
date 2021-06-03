@@ -4,9 +4,10 @@ import { withRouter } from 'react-router';
 import { deleteToken } from '../../../../utils/authentication.js';
 import styles from './Footer.module.css';
 
-const FooterButton = ({ lightning, logout, history }) => {
+const FooterButton = ({ lightning, logout, history, page }) => {
   const handleClick = () => {
     deleteToken();
+    if (page === 'authed') return history.replace('/property');
     history.replace('/');
   };
   const handleBack = () => {
@@ -29,7 +30,7 @@ const FooterButton = ({ lightning, logout, history }) => {
 };
 
 const Footer = (props) => {
-  const { btn, lightning, logout, history } = props;
+  const { btn, lightning, logout, history, page } = props;
 
   return (
     <footer className={styles.footer}>
@@ -42,6 +43,7 @@ const Footer = (props) => {
           lightning={lightning}
           logout={logout}
           history={history}
+          page={page}
         />
       )}
     </footer>

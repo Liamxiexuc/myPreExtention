@@ -3,13 +3,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../components/Layout.jsx';
 import Container from '../components/Container';
-import { fetchToken } from '../../../utils/authentication.js';
+import { isAuthenticated } from '../../../utils/authentication.js';
 import styles from './Welcome.module.css';
 
 function Welcome(props) {
   const getToken = async () => {
-    const token = await fetchToken();
-    if (!(JSON.stringify(token) === '{}')) {
+    const isLogin = await isAuthenticated();
+    if (isLogin) {
       props.history.push('/dashboard');
     }
   };

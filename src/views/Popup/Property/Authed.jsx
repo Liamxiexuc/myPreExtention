@@ -3,18 +3,22 @@ import Layout from '../components/Layout.jsx';
 import Card from './components/Card.jsx';
 import { sendProperty } from '../../../utils/property.js';
 import { handlePropertyData } from '../../../utils/tools.js';
+import { getPropertyInfo } from '../../../utils/content.js';
 import Loading from '../components/Loading';
 import styles from './Authed.module.css';
 
-const Authed = (props) => {
+const Authed = () => {
   const [active, setActive] = useState('PROPERTY INTELLIGENCE');
+  const [data, setData] = useState({});
   const [propertyData, setPropertyData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const { propertyInfo } = props.location.state;
 
   useEffect(() => {
     const getPropertyData = async () => {
       setIsLoading(true);
+      const propertyInfo = await getPropertyInfo();
+      setData(propertyInfo);
+
       const rawPropertyData = await sendProperty(propertyInfo);
       const propertyData = handlePropertyData(rawPropertyData);
       setPropertyData(propertyData);
@@ -23,11 +27,12 @@ const Authed = (props) => {
 
     getPropertyData();
   }, []);
+
   return (
-    <Layout lightning={true} logout={true}>
+    <Layout lightning={true} logout={true} page={'authed'}>
       <h1
         className={styles.title}
-      >{`${propertyInfo.address}, ${propertyInfo.suburb}`}</h1>
+      >{`${data.address}, ${data.suburb}`}</h1>
       <main className={styles.property}>
         {isLoading ? (
           <Loading />

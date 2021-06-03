@@ -11,13 +11,10 @@ export const getToken = () => {
   return new Promise((resolve, reject) => {
     chrome.storage.local.get([JWT_KEY], function (result) {
       if (!result) return reject('error');
-      resolve(result);
+      const { jwt } = result;
+      resolve(jwt);
     });
   });
-};
-
-export const fetchToken = async () => {
-  return await getToken();
 };
 
 export const deleteToken = () => {
@@ -26,12 +23,12 @@ export const deleteToken = () => {
 
 export const fetchMemberId = async () => {
   const token = await getToken();
-  const decodedToken = jwt.decode(token[JWT_KEY]);
+  const decodedToken = jwt.decode(token);
   return decodedToken.id;
 };
 
-export const isAuthenticated = () => {
-  const token = getToken();
+export const isAuthenticated = async () => {
+  const token = await getToken();
 
   if (!token) return false;
 

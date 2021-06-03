@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { MemoryRouter } from 'react-router';
-
+import { isAuthenticated } from './utils/authentication.js';
 import App from './views/Popup/App';
 import './assets/fonts/paladinscond.ttf';
 import 'normalize.css';
@@ -48,7 +48,7 @@ if (
 
 chrome.tabs.query(
   { active: true, currentWindow: true },
-  function (tab) {
+  async function (tab) {
     //Get Url Before render, and pass it to router
     let isPropertyPage = false;
     const currentUrl = tab[0].url;
@@ -63,11 +63,12 @@ chrome.tabs.query(
     if (isIncludeDomain && isSepcificHouse) {
       isPropertyPage = true;
     }
+    const isLogin = await isAuthenticated();
 
     ReactDOM.render(
       <React.StrictMode>
         <MemoryRouter>
-          <App isPropertyPage={isPropertyPage} />
+          <App isPropertyPage={isPropertyPage} isLogin={isLogin} />
         </MemoryRouter>
       </React.StrictMode>,
       document.getElementById('root'),

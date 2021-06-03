@@ -12,8 +12,13 @@ import Authed from './Property/Authed.jsx';
 
 import styles from './App.module.css';
 
-function App({ isPropertyPage }) {
-  const homeComponent = !isPropertyPage ? Welcome : Property;
+function App({ isPropertyPage, isLogin }) {
+  let homeComponent = Welcome;
+
+  if (isPropertyPage) {
+    homeComponent = isLogin ? Authed : Property;
+  }
+
   return (
     <div className={styles.app}>
       <Switch>
@@ -31,6 +36,8 @@ function App({ isPropertyPage }) {
         <Route exact path="/invite" component={Invite} />
         <Route exact path="/afterInvite" component={AfterInvite} />
         <Route exact path="/authed" component={Authed} />
+        <Route exact path="/property" component={Property} />
+        <Route exact path="/authedProperty" component={Authed} />
       </Switch>
     </div>
   );

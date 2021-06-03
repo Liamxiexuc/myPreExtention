@@ -1,29 +1,14 @@
 /* global chrome */
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import Layout from '../components/Layout.jsx';
 import Container from '../components/Container';
-import { fetchToken } from '../../../utils/authentication.js';
 import { getPropertyInfo } from '../../../utils/content.js';
 import styles from './Property.module.css';
 
-const Property = (props) => {
+const Property = () => {
   const [data, setData] = useState({});
-
-  const getToken = async (propertyInfo) => {
-    const token = await fetchToken();
-    if (JSON.stringify(token) === '{}') {
-      return null;
-    } else {
-      props.history.push({
-        pathname: '/authed',
-        state: {
-          propertyInfo,
-        },
-      });
-    }
-  };
 
   const handleClick = () => {
     chrome.tabs.create({
@@ -35,7 +20,6 @@ const Property = (props) => {
     const fetchProperty = async () => {
       const propertyInfo = await getPropertyInfo();
       setData(propertyInfo);
-      await getToken(propertyInfo);
     };
 
     fetchProperty();
@@ -77,4 +61,4 @@ const Property = (props) => {
   );
 };
 
-export default withRouter(Property);
+export default Property;

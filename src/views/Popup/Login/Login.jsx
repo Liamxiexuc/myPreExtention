@@ -33,7 +33,8 @@ class Login extends Component {
       try {
         const token = await login(data);
         setToken(token);
-        if (isPropertyPage) return this.props.history.replace('/');
+        if (isPropertyPage)
+          return this.props.history.replace('/authedProperty');
         this.props.history.replace('/dashboard');
       } catch (error) {
         return this.setState({ error });
@@ -44,7 +45,6 @@ class Login extends Component {
     const { getFieldDecorator } = this.props;
     const error = { ...this.state.error };
     const serverErrorMsg = error?.response?.data?.message;
-    console.log(this.props);
 
     return (
       <Layout>
