@@ -8,13 +8,16 @@ import styles from './Authed.module.css';
 const Authed = (props) => {
   const [active, setActive] = useState('PROPERTY INTELLIGENCE');
   const [propertyData, setPropertyData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const { propertyInfo } = props.location.state;
 
   useEffect(() => {
     const getPropertyData = async () => {
+      setIsLoading(true);
       const rawPropertyData = await sendProperty(propertyInfo);
       const propertyData = handlePropertyData(rawPropertyData);
       setPropertyData(propertyData);
+      setIsLoading(false);
     };
 
     getPropertyData();
@@ -25,18 +28,22 @@ const Authed = (props) => {
         className={styles.title}
       >{`${propertyInfo.address}, ${propertyInfo.suburb}`}</h1>
       <main className={styles.property}>
-        <section className={styles.container}>
-          {propertyData &&
-            propertyData.map((i) => (
-              <Card
-                key={i.title}
-                title={i.title}
-                data={i.data}
-                active={active}
-                setActive={setActive}
-              />
-            ))}
-        </section>
+        {isLoading ? (
+          <div>Loading ...</div>
+        ) : (
+          <section className={styles.container}>
+            {propertyData &&
+              propertyData.map((i) => (
+                <Card
+                  key={i.title}
+                  title={i.title}
+                  data={i.data}
+                  active={active}
+                  setActive={setActive}
+                />
+              ))}
+          </section>
+        )}
       </main>
     </Layout>
   );
