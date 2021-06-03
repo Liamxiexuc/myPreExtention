@@ -3,6 +3,7 @@ import Layout from '../components/Layout.jsx';
 import Card from './components/Card.jsx';
 import { sendProperty } from '../../../utils/property.js';
 import { handlePropertyData } from '../../../utils/tools.js';
+import Loading from '../components/Loading';
 import styles from './Authed.module.css';
 
 const Authed = (props) => {
@@ -29,7 +30,7 @@ const Authed = (props) => {
       >{`${propertyInfo.address}, ${propertyInfo.suburb}`}</h1>
       <main className={styles.property}>
         {isLoading ? (
-          <div>Loading ...</div>
+          <Loading />
         ) : (
           <section className={styles.container}>
             {propertyData &&
