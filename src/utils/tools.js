@@ -36,35 +36,35 @@ export const handlePropertyData = (data) => {
       title: 'PROPERTY INTELLIGENCE',
       data: [
         {
-          title: 'ADDRESS',
+          title: 'address',
           value: lineAddress,
         },
         {
-          title: 'APPRAISED VALUE',
-          value: appraisedValue,
+          title: 'appraised value',
+          value: `$${appraisedValue}`,
         },
         {
-          title: 'APPRAISED RENT',
-          value: appraisedRent,
+          title: 'appraised rent',
+          value: `$${appraisedRent}`,
         },
         {
-          title: 'APPRAISED YIELD',
+          title: 'appraised yield',
           value: ' - ',
         },
         {
-          title: 'ESTIMATED SALE PRICE',
+          title: 'estimated sale price',
           value: ' - ',
         },
         {
-          title: 'DAYS ON MARKET',
+          title: 'days on market',
           value: ' - ',
         },
         {
-          title: 'DISCOUNTING',
+          title: 'discounting',
           value: ' - ',
         },
         {
-          title: 'VENDOR DISTRESS',
+          title: 'vendor distress',
           value: ' - ',
         },
       ],
@@ -73,24 +73,25 @@ export const handlePropertyData = (data) => {
       title: 'STREET INTELLIGENCE',
       data: [
         {
-          title: 'PUBLIC HOUSING',
+          title: 'public housing',
           value: publicHousing,
+          // value: publicHousing || ' - ',
         },
         {
-          title: 'HOUSES',
-          value: breakdownHousePercentage,
+          title: 'houses',
+          value: `${breakdownHousePercentage}%`,
         },
         {
-          title: 'OWNER OCCUPIERS',
-          value: breakdownOccupancyPercentage,
+          title: 'owner occupiers',
+          value: `${breakdownOccupancyPercentage}%`,
         },
         {
-          title: 'AVERAGE YIELD',
-          value: averageYield,
+          title: 'average yield',
+          value: `${averageYield}%`,
         },
         {
-          title: 'AVERAGE HOUSEHOLD INCOME',
-          value: averageIncome,
+          title: 'average household income',
+          value: `${averageIncome}%`,
         },
       ],
     },
@@ -98,56 +99,56 @@ export const handlePropertyData = (data) => {
       title: 'SUBURB INTELLIGENCE',
       data: [
         {
-          title: 'TOTAL DWELLINGS',
+          title: 'total dwellings',
           value: dwellings,
         },
         {
-          title: 'PEOPLE PER DWELLING',
+          title: 'people per dwelling',
           value: meanPeopleDwellings,
         },
         {
-          title: 'AVERAGE AGE',
+          title: 'average age',
           value: medianAge,
         },
         {
-          title: 'POPULATION',
+          title: 'population',
           value: population,
         },
         {
-          title: 'PUBLIC HOUSING',
-          value: suburbPublicHousing,
+          title: 'public housing',
+          value: `${suburbPublicHousing}%`,
         },
         {
-          title: 'HOUSES',
-          value: suburbBreakdownHousePercentage,
+          title: 'houses',
+          value: `${suburbBreakdownHousePercentage}%`,
         },
         {
-          title: 'OWNER OCCUPIERS',
-          value: suburbBreakdownOccupancyPercentage,
+          title: 'owner occupiers',
+          value: `${suburbBreakdownOccupancyPercentage}%`,
         },
         {
-          title: 'AVERAGE HOUSEHOLD INCOME',
-          value: suburbAverageIncome,
+          title: 'average household income',
+          value: `$${suburbAverageIncome}pw`,
         },
         {
-          title: 'DAYS ON MARKET',
+          title: 'days on market',
           value: daysOnMarket,
         },
         {
-          title: 'NET YIELD',
-          value: netYield,
+          title: 'net yield',
+          value: `${netYield}%`,
         },
         {
-          title: 'VACANCY RATE',
-          value: vacancyRate,
+          title: 'vacancy rate',
+          value: `${vacancyRate}%`,
         },
         {
-          title: 'SUBURB MEDIAN PRICE',
-          value: suburbMedianPrice,
+          title: 'suburb median price',
+          value: `$${suburbMedianPrice}`,
         },
         {
-          title: 'SUBURB MEDIAN RENT',
-          value: suburbMedianRent,
+          title: 'suburb median rent',
+          value: `$${suburbMedianRent}pw`,
         },
       ],
     },
@@ -155,20 +156,20 @@ export const handlePropertyData = (data) => {
       title: 'LGA INTELLIGENCE',
       data: [
         {
-          title: 'AVERAGE YIELD',
-          value: lgaAverageYield,
+          title: 'average yield',
+          value: `${lgaAverageYield}%`,
         },
         {
-          title: 'AVERAGE HOUSEHOLD INCOME',
-          value: lgaAverageIncome,
+          title: 'average household income',
+          value: `$${lgaAverageIncome}pw`,
         },
         {
-          title: 'HOUSES',
-          value: lgaBreakdownHousePercentage,
+          title: 'houses',
+          value: `${lgaBreakdownHousePercentage}%`,
         },
         {
-          title: 'OWNER OCCUPIERS',
-          value: lgaBreakdownOccupancyPercentage,
+          title: 'owner occupiers',
+          value: `${lgaBreakdownOccupancyPercentage}%`,
         },
       ],
     },

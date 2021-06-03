@@ -4,7 +4,7 @@ import styles from './Row.module.css';
 function Row({ title, value }) {
   return (
     <div className={styles.row}>
-      <span>{title}:</span>
+      <span className={styles.title}>{title}:</span>
       <span className={styles.value}>{value}</span>
     </div>
   );
