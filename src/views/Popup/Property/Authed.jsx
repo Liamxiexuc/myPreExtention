@@ -1,70 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout.jsx';
-import Container from '../components/Container';
 import Card from './components/Card.jsx';
 import { sendProperty } from '../../../utils/property.js';
+import { handlePropertyData } from '../../../utils/tools.js';
 import styles from './Authed.module.css';
-
-const data = [
-  {
-    title: 'ADDRESS',
-    value: '20/74 SANDY BAY RD, BATTERY POINT TAS',
-  },
-  {
-    title: 'APPRAISED YIELD',
-    value: ' - ',
-  },
-  {
-    title: 'ESTIMATED SALE PRICE',
-    value: ' - ',
-  },
-  {
-    title: 'DAYS ON MARKET',
-    value: ' - ',
-  },
-  {
-    title: 'DISCOUNTING',
-    value: ' - ',
-  },
-  {
-    title: 'VENDOR DISTRESS',
-    value: ' - ',
-  },
-];
-
-const mockData = [
-  {
-    title: 'PROPERTY INTELLIGENCE',
-    data,
-  },
-  {
-    title: 'STREET INTELLIGENCE',
-    data,
-  },
-  {
-    title: 'SUBURB INTELLIGENCE',
-    data,
-  },
-  {
-    title: 'LGA INTELLIGENCE',
-    data,
-  },
-];
 
 const Authed = (props) => {
   const [active, setActive] = useState('PROPERTY INTELLIGENCE');
-  const [propertyData, setPropertyData] = useState({});
+  const [propertyData, setPropertyData] = useState([]);
   const { propertyInfo } = props.location.state;
 
   useEffect(() => {
     const getPropertyData = async () => {
-      const propertyData = await sendProperty(propertyInfo);
+      const rawPropertyData = await sendProperty(propertyInfo);
+      const propertyData = handlePropertyData(rawPropertyData);
       setPropertyData(propertyData);
     };
 
     getPropertyData();
   }, []);
-  console.log(propertyData);
   return (
     <Layout lightning={true} logout={true}>
       <h1
@@ -72,15 +26,16 @@ const Authed = (props) => {
       >{`${propertyInfo.address}, ${propertyInfo.suburb}`}</h1>
       <main className={styles.property}>
         <section className={styles.container}>
-          {mockData.map((i) => (
-            <Card
-              key={i.title}
-              title={i.title}
-              data={i.data}
-              active={active}
-              setActive={setActive}
-            />
-          ))}
+          {propertyData &&
+            propertyData.map((i) => (
+              <Card
+                key={i.title}
+                title={i.title}
+                data={i.data}
+                active={active}
+                setActive={setActive}
+              />
+            ))}
         </section>
       </main>
     </Layout>
