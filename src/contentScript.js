@@ -35,15 +35,6 @@ const getProperty = () => {
     lng,
   };
 };
-let property = {};
-
-/**
- * Wait 1s to make sure get geo data from dom
- * Geo data dom is generate from page script(async fn)
- */
-setTimeout(() => {
-  property = getProperty();
-}, 1000);
 
 chrome.runtime.onMessage.addListener(function (
   message,
@@ -52,6 +43,8 @@ chrome.runtime.onMessage.addListener(function (
 ) {
   switch (message.type) {
     case 'getProperty':
+      const property = getProperty();
+
       sendResponse(property);
       break;
     default:

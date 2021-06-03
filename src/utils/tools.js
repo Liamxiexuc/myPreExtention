@@ -74,7 +74,7 @@ export const handlePropertyData = (data) => {
       data: [
         {
           title: 'public housing',
-          value: publicHousing,
+          value: `${publicHousing}%`,
           // value: publicHousing || ' - ',
         },
         {
@@ -91,7 +91,7 @@ export const handlePropertyData = (data) => {
         },
         {
           title: 'average household income',
-          value: `${averageIncome}%`,
+          value: `$${averageIncome}pw`,
         },
       ],
     },
