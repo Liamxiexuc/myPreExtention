@@ -20,7 +20,13 @@ function App({ isPropertyPage }) {
         <Route exact path="/" component={homeComponent} />
         <Route exact path="/registration" component={Registration} />
         <Route exact path="/confirm" component={Confirm} />
-        <Route exact path="/login" component={Login} />
+        <Route
+          exact
+          path="/login"
+          render={(props) => (
+            <Login {...props} isPropertyPage={isPropertyPage} />
+          )}
+        />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/invite" component={Invite} />
         <Route exact path="/afterInvite" component={AfterInvite} />
