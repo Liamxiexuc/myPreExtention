@@ -51,7 +51,8 @@ chrome.tabs.query(
   async function (tab) {
     //Get Url Before render, and pass it to router
     let isPropertyPage = false;
-    const currentUrl = tab[0].url;
+    let currentUrl = tab[0].url;
+    currentUrl = currentUrl.split('?')[0];
     const isIncludeDomain = currentUrl.includes(
       'realestate.com.au/property',
     );
