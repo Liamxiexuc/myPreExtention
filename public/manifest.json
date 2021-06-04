@@ -1,7 +1,7 @@
 {
-  "name": "Awesome Extension",
-  "description": "create-react-app for extensions",
-  "version": "1.0",
+  "name": "Property Power",
+  "description": "An awesome extension",
+  "version": "0.0.1",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js"
