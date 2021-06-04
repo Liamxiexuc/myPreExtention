@@ -1,5 +1,6 @@
 import React from 'react';
 import Row from './Row.jsx';
+import AdvancedCard from './AdvancedCard.jsx';
 import styles from './Card.module.css';
 
 const Card = ({ title, data, active, setActive }) => {
@@ -18,12 +19,18 @@ const Card = ({ title, data, active, setActive }) => {
       ? `${styles.title} ${styles.titleActive}`
       : styles.title;
 
+  const isSuburb = active === 'SUBURB INTELLIGENCE' ? true : false;
+
   const Content =
     title === active ? (
       <div className={styles.content}>
-        {data.map((i) => (
-          <Row key={i.title} title={i.title} value={i.value} />
-        ))}
+        {isSuburb ? (
+          <AdvancedCard data={data} />
+        ) : (
+          data.map((i) => (
+            <Row key={i.title} title={i.title} value={i.value} />
+          ))
+        )}
       </div>
     ) : null;
 

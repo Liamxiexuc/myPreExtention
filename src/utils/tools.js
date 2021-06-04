@@ -97,60 +97,64 @@ export const handlePropertyData = (data) => {
     },
     {
       title: 'SUBURB INTELLIGENCE',
-      data: [
-        {
-          title: 'total dwellings',
-          value: dwellings,
-        },
-        {
-          title: 'people per dwelling',
-          value: meanPeopleDwellings,
-        },
-        {
-          title: 'average age',
-          value: medianAge,
-        },
-        {
-          title: 'population',
-          value: population,
-        },
-        {
-          title: 'public housing',
-          value: `${suburbPublicHousing}%`,
-        },
-        {
-          title: 'houses',
-          value: `${suburbBreakdownHousePercentage}%`,
-        },
-        {
-          title: 'owner occupiers',
-          value: `${suburbBreakdownOccupancyPercentage}%`,
-        },
-        {
-          title: 'average household income',
-          value: `$${suburbAverageIncome}pw`,
-        },
-        {
-          title: 'days on market',
-          value: daysOnMarket,
-        },
-        {
-          title: 'net yield',
-          value: `${netYield}%`,
-        },
-        {
-          title: 'vacancy rate',
-          value: `${vacancyRate}%`,
-        },
-        {
-          title: 'suburb median price',
-          value: `$${suburbMedianPrice}`,
-        },
-        {
-          title: 'suburb median rent',
-          value: `$${suburbMedianRent}pw`,
-        },
-      ],
+      data: {
+        general: [
+          {
+            title: 'total dwellings',
+            value: dwellings,
+          },
+          {
+            title: 'people per dwelling',
+            value: meanPeopleDwellings,
+          },
+          {
+            title: 'average age',
+            value: medianAge,
+          },
+          {
+            title: 'population',
+            value: population,
+          },
+          {
+            title: 'public housing',
+            value: `${suburbPublicHousing}%`,
+          },
+          {
+            title: 'houses',
+            value: `${suburbBreakdownHousePercentage}%`,
+          },
+          {
+            title: 'owner occupiers',
+            value: `${suburbBreakdownOccupancyPercentage}%`,
+          },
+          {
+            title: 'average household income',
+            value: `$${suburbAverageIncome}pw`,
+          },
+        ],
+        market: [
+          {
+            title: 'days on market',
+            value: daysOnMarket,
+          },
+          {
+            title: 'net yield',
+            value: `${netYield}%`,
+          },
+          {
+            title: 'vacancy rate',
+            value: `${vacancyRate}%`,
+          },
+          {
+            title: 'suburb median price',
+            value: `$${suburbMedianPrice}`,
+          },
+          {
+            title: 'suburb median rent',
+            value: `$${suburbMedianRent}pw`,
+          },
+        ],
+      },
     },
     {
       title: 'LGA INTELLIGENCE',

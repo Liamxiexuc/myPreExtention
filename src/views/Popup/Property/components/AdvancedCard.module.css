@@ -1,0 +1,11 @@
+.title {
+  text-align: center;
+  margin: 0 4px 10px;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(123, 17, 17, 0.5);
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.bottom {
+  margin-top: 8px;
+}
