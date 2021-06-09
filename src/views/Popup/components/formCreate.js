@@ -20,9 +20,13 @@ export default function formCreate(Cmp) {
     };
     getFieldDecorator = (field, option, serverErrorMsg) => {
       this.options[field] = option;
-      const errorMsg = serverErrorMsg
-        ? serverErrorMsg.split(':')[2]
+      let errorMsg = serverErrorMsg
+        ? serverErrorMsg
         : this.state.errors[field];
+
+      if (errorMsg && errorMsg.includes(':')) {
+        errorMsg = errorMsg.split(':')[2];
+      }
 
       return (InputCmp) => {
         return (
