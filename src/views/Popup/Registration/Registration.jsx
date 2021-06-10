@@ -65,7 +65,7 @@ class Registration extends Component {
                     className={styles.input}
                     id="firstName"
                     type="text"
-                    placeholder="please input ur first name"
+                    placeholder="please input your first name"
                   />,
                 )}
               </div>
@@ -82,7 +82,7 @@ class Registration extends Component {
                     id="lastName"
                     className={styles.input}
                     type="text"
-                    placeholder="please input ur last name"
+                    placeholder="please input your last name"
                   />,
                 )}
               </div>
@@ -101,7 +101,7 @@ class Registration extends Component {
                     id="email"
                     className={styles.input}
                     type="email"
-                    placeholder="please input ur email"
+                    placeholder="please input your email"
                   />,
                 )}
               </div>

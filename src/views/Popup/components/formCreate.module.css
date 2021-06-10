@@ -1,5 +1,9 @@
+.sole {
+  position: relative;
+}
 .errorMsg {
   display: flex;
-  flex-direction: row-reverse;
+  position: absolute;
+  right: 0;
   color: var(--color-red);
 }

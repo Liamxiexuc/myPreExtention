@@ -57,7 +57,7 @@ class Invite extends Component {
                       id="email"
                       className={styles.input}
                       type="email"
-                      placeholder="please input ur email"
+                      placeholder="please input your email"
                     />,
                   )}
                 </div>
@@ -74,7 +74,7 @@ class Invite extends Component {
                       id="email"
                       className={styles.input}
                       type="email"
-                      placeholder="please input ur email"
+                      placeholder="please input your email"
                     />,
                   )}
                 </div>
@@ -91,7 +91,7 @@ class Invite extends Component {
                       id="email"
                       className={styles.input}
                       type="email"
-                      placeholder="please input ur email"
+                      placeholder="please input your email"
                     />,
                   )}
                 </div>

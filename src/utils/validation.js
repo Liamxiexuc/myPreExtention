@@ -1,12 +1,16 @@
-import { isEmailValid } from './regex.js';
+import { isEmailValid, isPasswordValid } from './regex.js';
 
 export const emailRules = {
   required: true,
-  message: 'please input ur email',
+  message: 'please input your email',
 };
 export const passwordRules = {
   required: true,
-  message: 'please input ur password',
+  message: 'please input your password',
+};
+export const passwordLengthRules = {
+  validator: isPasswordValid,
+  message: 'password should be at least 6 characters',
 };
 export const emailFormatRules = {
   validator: isEmailValid,
@@ -14,9 +18,9 @@ export const emailFormatRules = {
 };
 export const firstNameRules = {
   required: true,
-  message: 'please input ur first name',
+  message: 'please input your first name',
 };
 export const lastNameRules = {
   required: true,
-  message: 'please input ur last name',
+  message: 'please input your last name',
 };

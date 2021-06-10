@@ -1,6 +1,6 @@
 {
   "name": "Property Power",
-  "description": "An awesome extension",
+  "description": "Giving you the numbers the listing left out",
   "version": "0.0.1",
   "manifest_version": 3,
   "background": {

@@ -30,7 +30,7 @@ export default function formCreate(Cmp) {
 
       return (InputCmp) => {
         return (
-          <div>
+          <div className={styles.sole}>
             {React.cloneElement(InputCmp, {
               name: field,
               value: this.state[field] || '',
