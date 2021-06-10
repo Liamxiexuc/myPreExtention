@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import formCreate from '../components/formCreate.js';
 import Layout from '../components/Layout.jsx';
 import Container from '../components/Container';
+import ButtonLoading from '../components/ButtonLoading';
 import {
   emailRules,
   emailFormatRules,
 } from '../../../utils/validation.js';
+import { fetchMemberData } from '../../../utils/member.js';
+import { inviteMember } from '../../../services/member.js';
 import styles from './Invite.module.css';
 
 @formCreate
@@ -13,24 +16,52 @@ class Invite extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: false,
       error: null,
+      memberId: '',
     };
   }
+
+  getMember = async () => {
+    const memberData = await fetchMemberData();
+    const { _id: memberId } = memberData;
+    this.setState({ memberId });
+  };
+
   submit = (event) => {
     event.preventDefault();
     this.setState({ error: null });
     const { getFieldsValue, getFieldValue, validateFields } =
       this.props;
-    validateFields((err, values) => {
+    validateFields(async (err, values) => {
       const data = getFieldsValue();
       const keyLength = Object.keys(data).length;
       const isEmpty = keyLength > 1 ? false : true;
       if (err || isEmpty) return;
-      this.props.history.push('/afterInvite');
+      const emails = [];
+      const { email1, email2, email3 } = getFieldsValue();
+      email1 && emails.push(email1);
+      email2 && emails.push(email2);
+      email3 && emails.push(email3);
+      const { memberId } = this.state;
+      try {
+        this.setState({ isLoading: true });
+        await inviteMember(memberId, emails);
+        this.setState({ isLoading: false });
+        this.props.history.push('/afterInvite');
+      } catch (error) {
+        return this.setState({ error, isLoading: false });
+      }
     });
   };
+
+  componentDidMount() {
+    this.getMember();
+  }
+
   render() {
     const { getFieldDecorator } = this.props;
+    const { isLoading } = this.state;
     return (
       <Layout>
         <h1 className={styles.title}>INVITE NEW "POWER" USERS</h1>
@@ -96,9 +127,18 @@ class Invite extends Component {
                   )}
                 </div>
               </div>
-              <button className={styles.btn} onClick={this.submit}>
-                Send Invitations
-              </button>
+              {isLoading ? (
+                <button
+                  disabled={true}
+                  className={`${styles.btn} ${styles.disabled}`}
+                >
+                  <ButtonLoading />
+                </button>
+              ) : (
+                <button className={styles.btn} onClick={this.submit}>
+                  Send Invitations
+                </button>
+              )}
             </form>
           </div>
         </Container>
