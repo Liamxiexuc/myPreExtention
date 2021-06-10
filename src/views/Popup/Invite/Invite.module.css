@@ -48,10 +48,11 @@
   background: var(--color-burgundy);
   border-radius: 24px;
   font-size: 12px;
-  margin: 16px 40px 12px;
+  margin: 20px auto 12px;
   cursor: pointer;
   border: none;
   outline: none;
+  display: block;
 }
 .text {
   color: var(--color-burgundy);
