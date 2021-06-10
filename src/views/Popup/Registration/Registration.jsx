@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import formCreate from '../components/formCreate.js';
 import Layout from '../components/Layout.jsx';
 import Container from '../components/Container';
+import ButtonLoading from '../components/ButtonLoading';
 import { signup } from '../../../services/auth.js';
 import {
   emailRules,
@@ -17,6 +18,7 @@ class Registration extends Component {
     super(props);
     this.state = {
       error: null, // TODO Maybe remove from state?
+      isLoading: false,
     };
   }
   submit = async (event) => {
@@ -29,15 +31,18 @@ class Registration extends Component {
       const isEmpty = keyLength > 1 ? false : true;
       if (err || isEmpty) return;
       try {
+        this.setState({ isLoading: true });
         await signup(data);
+        this.setState({ isLoading: false });
         this.props.history.replace('confirm');
       } catch (error) {
-        return this.setState({ error });
+        return this.setState({ error, isLoading: false });
       }
     });
   };
   render() {
     const { getFieldDecorator } = this.props;
+    const { isLoading } = this.state;
     const error = { ...this.state.error };
     const serverErrorMsg = error?.response?.data?.message;
     return (
@@ -106,13 +111,22 @@ class Registration extends Component {
                 )}
               </div>
             </div>
-            <button
-              type="submit"
-              className={styles.btn}
-              onClick={this.submit}
-            >
-              Submit
-            </button>
+            {isLoading ? (
+              <button
+                disabled={true}
+                className={`${styles.btn} ${styles.disabled}`}
+              >
+                <ButtonLoading />
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className={styles.btn}
+                onClick={this.submit}
+              >
+                LOGIN
+              </button>
+            )}
           </form>
         </Container>
       </Layout>
