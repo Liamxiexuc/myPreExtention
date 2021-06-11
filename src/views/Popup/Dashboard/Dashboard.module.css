@@ -1,6 +1,7 @@
 .dashboard {
   text-align: left;
   color: var(--color-burgundy);
+  min-height: 200px;
 }
 .title {
   font-family: Paladinscond;
