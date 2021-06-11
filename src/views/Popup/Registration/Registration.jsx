@@ -124,7 +124,7 @@ class Registration extends Component {
                 className={styles.btn}
                 onClick={this.submit}
               >
-                LOGIN
+                JOIN WAITLIST
               </button>
             )}
           </form>
