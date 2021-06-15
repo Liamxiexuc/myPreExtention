@@ -2,6 +2,11 @@ import axios from 'axios';
 
 import { getToken } from './authentication.js';
 
+/* axios.defaults.baseURL =
+  process.env.NODE_ENV === 'production'
+    ? 'https://property-power.herokuapp.com/api/v1'
+    : 'http://localhost:4000/api/v1';
+ */
 axios.defaults.baseURL = 'http://localhost:4000/api/v1';
 
 const appendAuthToken = (config) => {

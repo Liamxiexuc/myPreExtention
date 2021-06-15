@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import { MemoryRouter } from 'react-router';
 import { isAuthenticated } from './utils/authentication.js';
 import App from './views/Popup/App';
+import { isValidDomain } from './utils/helper.js';
 import './assets/fonts/paladinscond.ttf';
 import 'normalize.css';
 import './variables.css';
@@ -53,9 +54,7 @@ chrome.tabs.query(
     let isPropertyPage = false;
     let currentUrl = tab[0].url;
     currentUrl = currentUrl.split('?')[0];
-    const isIncludeDomain = currentUrl.includes(
-      'realestate.com.au/property',
-    );
+    const isIncludeDomain = isValidDomain(currentUrl);
     const isSepcificHouse = !!currentUrl
       .split('-')
       ?.pop()
