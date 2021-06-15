@@ -7,7 +7,8 @@ import { getToken } from './authentication.js';
     ? 'https://property-power.herokuapp.com/api/v1'
     : 'http://localhost:4000/api/v1';
  */
-axios.defaults.baseURL = 'http://localhost:4000/api/v1';
+axios.defaults.baseURL =
+  'https://property-power.herokuapp.com/api/v1';
 
 const appendAuthToken = (config) => {
   const jwtToken = getToken();
