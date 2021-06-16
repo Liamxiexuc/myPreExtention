@@ -1,6 +1,12 @@
 export const handlePropertyData = (data) => {
   const {
-    property: { lineAddress, appraisedValue, appraisedRent },
+    property: {
+      lineAddress,
+      appraisedValue,
+      appraisedRent,
+      appraisedYield,
+      motivationRating,
+    },
     street: {
       publicHousing,
       breakdownHousePercentage,
@@ -49,7 +55,7 @@ export const handlePropertyData = (data) => {
         },
         {
           title: 'appraised yield',
-          value: ' - ',
+          value: `${appraisedYield}%`,
         },
         {
           title: 'estimated sale price',
@@ -65,7 +71,7 @@ export const handlePropertyData = (data) => {
         },
         {
           title: 'vendor distress',
-          value: ' - ',
+          value: motivationRating,
         },
       ],
     },
@@ -74,8 +80,7 @@ export const handlePropertyData = (data) => {
       data: [
         {
           title: 'public housing',
-          value: `${publicHousing}%`,
-          // value: publicHousing || ' - ',
+          value: publicHousing ? `${publicHousing}%` : ' - ',
         },
         {
           title: 'houses',
@@ -108,7 +113,7 @@ export const handlePropertyData = (data) => {
             value: meanPeopleDwellings,
           },
           {
-            title: 'average age',
+            title: 'median age',
             value: medianAge,
           },
           {
