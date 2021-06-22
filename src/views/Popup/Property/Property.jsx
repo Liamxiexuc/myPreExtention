@@ -33,7 +33,7 @@ const Property = () => {
             className={styles.title}
           >{`${data.address}, ${data.suburb}`}</h1>
           <p className={styles.msg}>
-            We have loaded XX "POWER" data points for this
+            We have loaded up to 81 "POWER" data points for this
           </p>
           <p className={styles.text}>
             <Link className={styles.link} to="/login">
