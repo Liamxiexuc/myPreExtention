@@ -14,8 +14,6 @@
   padding: 0;
 }
 .li {
-  font-size: 12px;
-  letter-spacing: -1px;
   position: relative;
   padding-left: 24px;
   margin-bottom: 4px;
@@ -34,8 +32,6 @@
 .msg {
   display: flex;
   color: var(--color-red);
-  font-size: 12px;
-  letter-spacing: -1px;
 }
 .msg:last-of-type {
   margin-bottom: 0;
@@ -43,7 +39,6 @@
 .subtitle {
   margin: 16px 0 6px;
   font-size: 14px;
-  letter-spacing: -1px;
 }
 .btn {
   font-family: Paladinscond;

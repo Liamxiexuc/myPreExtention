@@ -3,6 +3,7 @@
 }
 .errorMsg {
   display: flex;
+  font-size: 14px;
   position: absolute;
   right: 0;
   color: var(--color-red);

@@ -2,17 +2,12 @@
   margin-top: 6px;
 }
 .sole {
-  margin: 8px 0;
+  margin: 8px 0 12px;
 }
 .row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-.label {
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: -1px;
 }
 .input {
   color: var(--color-white);
@@ -22,6 +17,7 @@
   background-color: transparent;
   border: none;
   border-bottom: 1px solid var(--color-burgundy);
+  font-size: 16px;
 }
 .input::-webkit-input-placeholder {
   color: var(--color-burgundy);
@@ -46,7 +42,7 @@
   cursor: default;
 }
 .text {
-  font-size: 10px;
+  font-size: 12px;
   text-align: left;
   margin: 0;
   margin-bottom: 12px;
