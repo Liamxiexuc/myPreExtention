@@ -5,13 +5,27 @@
   font-weight: normal;
 }
 
+@font-face {
+  font-family: 'AvenirNextMedium';
+  src: local('AvenirNextMedium'),
+    url('./assets/fonts/AvenirNextCondensed-UltraLight.woff')
+      format('woff');
+}
+
 :root {
   --color-red: #f62121;
   --color-burgundy: #7b1111;
   --color-yellow: #ffe610;
   --color-white: #ffffff;
+  --color-wine: #7b1111;
+  --color-orange: #ff8001;
   --color-background: linear-gradient(
     var(--color-red),
     var(--color-burgundy)
+  );
+  --text-yellow-grad: linear-gradient(
+    45deg,
+    var(--color-orange) 0%,
+    var(--color-yellow) 120%
   );
 }
