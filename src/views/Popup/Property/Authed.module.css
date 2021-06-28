@@ -1,11 +1,20 @@
 .title {
-  color: var(--color-yellow);
+  font-weight: 600;
   font-family: Paladinscond;
-  font-size: 22px;
+  color: var(--color-yellow);
+  font-size: 24px;
+  background: var(--text-yellow-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-right: 1%;
   margin: 8px 28px 0;
-  text-align: left;
+  font-size: 22px;
 }
 .property {
   padding: 12px 28px;
   margin-bottom: 18px;
+}
+.container {
+  border-radius: 4px;
+  overflow: hidden;
 }
