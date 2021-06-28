@@ -56,60 +56,66 @@ class Login extends Component {
       <Layout>
         <Container style={{ backgroundColor: '#ffe610' }}>
           <h1 className={styles.title}>Login</h1>
-          <div className={styles.sole}>
-            <div className={styles.row}>
-              <label htmlFor="email" className={styles.label}>
-                EMAIL
-              </label>
-              {getFieldDecorator(
-                'email',
-                {
-                  rules: [emailRules, emailFormatRules],
-                },
-                serverErrorMsg,
-              )(
-                <input
-                  id="email"
-                  className={styles.input}
-                  type="email"
-                  placeholder="please input your email"
-                />,
-              )}
+          <form>
+            <div className={styles.sole}>
+              <div className={styles.row}>
+                <label htmlFor="email" className={styles.label}>
+                  EMAIL
+                </label>
+                {getFieldDecorator(
+                  'email',
+                  {
+                    rules: [emailRules, emailFormatRules],
+                  },
+                  serverErrorMsg,
+                )(
+                  <input
+                    id="email"
+                    className={styles.input}
+                    type="email"
+                    placeholder="please input your email"
+                  />,
+                )}
+              </div>
             </div>
-          </div>
-          <div className={styles.sole}>
-            <div className={styles.row}>
-              <label htmlFor="password" className={styles.label}>
-                PASSWORD
-              </label>
-              {getFieldDecorator(
-                'password',
-                {
-                  rules: [passwordRules, passwordLengthRules],
-                },
-                serverErrorMsg,
-              )(
-                <input
-                  id="password"
-                  className={styles.input}
-                  type="password"
-                  placeholder="please input your password"
-                />,
-              )}
+            <div className={styles.sole}>
+              <div className={styles.row}>
+                <label htmlFor="password" className={styles.label}>
+                  PASSWORD
+                </label>
+                {getFieldDecorator(
+                  'password',
+                  {
+                    rules: [passwordRules, passwordLengthRules],
+                  },
+                  serverErrorMsg,
+                )(
+                  <input
+                    id="password"
+                    className={styles.input}
+                    type="password"
+                    placeholder="please input your password"
+                  />,
+                )}
+              </div>
             </div>
-          </div>
-          {isLoading ? (
-            <button
-              disabled={true}
-              className={`${styles.btn} ${styles.disabled}`}
-            >
-              <ButtonLoading />
-            </button>
-          ) : (
-            <button className={styles.btn} onClick={this.submit}>
-              LOGIN
-            </button>
-          )}
+            {isLoading ? (
+              <button
+                disabled={true}
+                className={`${styles.btn} ${styles.disabled}`}
+              >
+                <ButtonLoading />
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className={styles.btn}
+                onClick={this.submit}
+              >
+                LOGIN
+              </button>
+            )}
+          </form>
         </Container>
       </Layout>
     );
