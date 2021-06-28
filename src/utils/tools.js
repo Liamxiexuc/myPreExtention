@@ -153,7 +153,7 @@ export const handlePropertyData = (data) => {
         market: [
           {
             title: 'days on market',
-            value: daysOnMarket || ' - ',
+            value: daysOnMarket ? `${daysOnMarket} days` : ' - ',
           },
           {
             title: 'net yield',
