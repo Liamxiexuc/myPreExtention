@@ -25,7 +25,6 @@
   transition: max-height 0.5s ease;
   background-color: var(--color-white);
   color: var(--color-burgundy);
-  font-size: 12px;
 }
 .active {
   transform: translate3d(0, 0, 0);

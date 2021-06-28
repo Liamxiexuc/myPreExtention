@@ -20,8 +20,6 @@
 .msg {
   display: flex;
   color: var(--color-red);
-  font-size: 12px;
-  letter-spacing: -1px;
 }
 .btn {
   font-family: Paladinscond;
@@ -39,10 +37,7 @@
   text-align: center;
 }
 .text {
-  font-size: 12px;
-  letter-spacing: -1px;
   margin: 16px 0 24px;
-  font-weight: 600;
 }
 .text .link {
   color: var(--color-burgundy);
