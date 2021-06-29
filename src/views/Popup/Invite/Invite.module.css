@@ -11,7 +11,7 @@
   text-align: left;
 }
 .sole {
-  margin: 8px 0;
+  margin: 8px 0 12px;
 }
 .row {
   display: flex;
@@ -21,7 +21,7 @@
 .label {
   color: var(--color-burgundy);
   font-weight: 600;
-  font-size: 12px;
+  font-family: AvenirNextRegular;
 }
 .input {
   color: var(--color-burgundy);
@@ -56,8 +56,7 @@
 }
 .text {
   color: var(--color-burgundy);
-  font-size: 10px;
-  letter-spacing: -1px;
+  font-size: 14px;
   margin: 0;
   margin-bottom: 8px;
 }

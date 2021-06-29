@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import formCreate from '../components/formCreate.js';
 import Layout from '../components/Layout.jsx';
 import Container from '../components/Container';
@@ -38,6 +39,16 @@ class Registration extends Component {
       } catch (error) {
         return this.setState({ error, isLoading: false });
       }
+    });
+  };
+  handleClickTerms = () => {
+    chrome.tabs.create({
+      url: 'https://www.propertypowerplugin.com.au/terms',
+    });
+  };
+  handleClickPrivacy = () => {
+    chrome.tabs.create({
+      url: 'https://www.propertypowerplugin.com.au/privacy',
     });
   };
   render() {
@@ -110,6 +121,27 @@ class Registration extends Component {
                   />,
                 )}
               </div>
+            </div>
+            <div className={styles.msg}>
+              <small>
+                By submitting this form, you agree to our{' '}
+                <Link
+                  className={styles.link}
+                  onClick={this.handleClickTerms}
+                  to="#"
+                >
+                  terms
+                </Link>{' '}
+                and{' '}
+                <Link
+                  className={styles.link}
+                  onClick={this.handleClickPrivacy}
+                  to="#"
+                >
+                  privacy policy
+                </Link>{' '}
+                .
+              </small>
             </div>
             {isLoading ? (
               <button

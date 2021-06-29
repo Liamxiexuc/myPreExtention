@@ -12,6 +12,13 @@
       format('woff');
 }
 
+@font-face {
+  font-family: 'AvenirNextRegular';
+  src: local('AvenirNextRegular'),
+    url('./assets/fonts/AvenirNextCondensed-Regular.woff')
+      format('woff');
+}
+
 :root {
   --color-red: #f62121;
   --color-burgundy: #7b1111;

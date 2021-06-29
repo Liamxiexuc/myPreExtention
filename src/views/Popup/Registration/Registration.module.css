@@ -9,6 +9,9 @@
   align-items: center;
   justify-content: space-between;
 }
+.label {
+  font-family: AvenirNextRegular;
+}
 .input {
   color: var(--color-white);
   width: 190px;
@@ -46,4 +49,16 @@
   text-align: left;
   margin: 0;
   margin-bottom: 12px;
+  line-height: 16px;
+}
+.link {
+  color: var(--color-yellow);
+  text-decoration: none;
+}
+.msg {
+  margin-top: 28px;
+  text-transform: uppercase;
+}
+.msg small {
+  font-size: 10px;
 }

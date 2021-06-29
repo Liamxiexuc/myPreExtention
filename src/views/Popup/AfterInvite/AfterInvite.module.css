@@ -7,8 +7,6 @@
 }
 .text {
   color: var(--color-burgundy);
-  font-size: 12px;
-  letter-spacing: -1px;
   margin: 0;
   margin-bottom: 8px;
   text-align: left;

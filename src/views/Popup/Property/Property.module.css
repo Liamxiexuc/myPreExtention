@@ -20,6 +20,7 @@
 .msg {
   display: flex;
   color: var(--color-red);
+  font-family: AvenirNextRegular;
 }
 .btn {
   font-family: Paladinscond;
@@ -38,6 +39,7 @@
 }
 .text {
   margin: 16px 0 24px;
+  font-family: AvenirNextRegular;
 }
 .text .link {
   color: var(--color-burgundy);
