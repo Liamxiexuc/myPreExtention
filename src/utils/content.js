@@ -1,19 +1,28 @@
 /* global chrome */
 
+/**
+ * Keep sending requests to content script
+ *   until the property data loaded
+ *
+ */
 export const getPropertyInfo = () => {
   return new Promise((resolve, reject) => {
-    chrome.tabs.query(
-      { active: true, currentWindow: true },
-      function (tabs) {
-        chrome.tabs.sendMessage(
-          tabs[0].id,
-          { type: 'getProperty' },
-          function (property) {
-            if (!property) return reject('error');
-            resolve(property);
-          },
-        );
-      },
-    );
+    const watcher = setInterval(() => {
+      chrome.tabs.query(
+        { active: true, currentWindow: true },
+        function (tabs) {
+          chrome.tabs.sendMessage(
+            tabs[0].id,
+            { type: 'getProperty' },
+            function (property) {
+              if (property) {
+                clearInterval(watcher);
+                return resolve(property);
+              }
+            },
+          );
+        },
+      );
+    }, 50);
   });
 };

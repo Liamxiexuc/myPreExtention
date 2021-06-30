@@ -1,5 +1,5 @@
 /* global chrome */
-const getProperty = () => {
+const getProperty = async () => {
   const propertyInfo = document.querySelector(
     '.property-info-address',
   ).innerHTML;
@@ -15,9 +15,7 @@ const getProperty = () => {
     '.property-info__property-type',
   ).innerHTML;
 
-  const geoStyle = document
-    .querySelector('.static-map__img')
-    ?.getAttribute('style');
+  const geoStyle = await fetchGeoMap();
   let geoData = geoStyle.split('%7C')[1];
   geoData = geoData.split('&')[0];
   geoData = geoData.split('%2C');
@@ -36,6 +34,29 @@ const getProperty = () => {
   };
 };
 
+/**
+ * Add google map (in the page) watcher
+ *   and get the data once the map is loaded
+ *
+ */
+const fetchGeoMap = () => {
+  return new Promise((resolve, reject) => {
+    let geoStyle;
+    const watcher = setInterval(() => {
+      geoStyle = document
+        .querySelector('.static-map__img')
+        ?.getAttribute('style');
+      if (geoStyle) {
+        clearInterval(watcher);
+        resolve(geoStyle);
+      }
+    }, 50);
+  });
+};
+
+let propertyData;
+getProperty().then((res) => (propertyData = res));
+
 chrome.runtime.onMessage.addListener(function (
   message,
   sender,
@@ -43,9 +64,7 @@ chrome.runtime.onMessage.addListener(function (
 ) {
   switch (message.type) {
     case 'getProperty':
-      const property = getProperty();
-
-      sendResponse(property);
+      sendResponse(propertyData);
       break;
     default:
       console.error('Unrecognised message: ', message);
