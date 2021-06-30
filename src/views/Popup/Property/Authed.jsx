@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import Layout from '../components/Layout.jsx';
 import Card from './components/Card.jsx';
 import { sendProperty } from '../../../utils/property.js';
@@ -10,6 +11,7 @@ import styles from './Authed.module.css';
 const Authed = () => {
   const [active, setActive] = useState('PROPERTY INTELLIGENCE');
   const [data, setData] = useState({});
+  const [error, setError] = useState(null);
   const [propertyData, setPropertyData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -18,11 +20,15 @@ const Authed = () => {
       setIsLoading(true);
       const propertyInfo = await getPropertyInfo();
       setData(propertyInfo);
-
-      const rawPropertyData = await sendProperty(propertyInfo);
-      const propertyData = handlePropertyData(rawPropertyData);
-      setPropertyData(propertyData);
-      setIsLoading(false);
+      try {
+        const rawPropertyData = await sendProperty(propertyInfo);
+        const propertyData = handlePropertyData(rawPropertyData);
+        setPropertyData(propertyData);
+        setIsLoading(false);
+      } catch (error) {
+        setError(error);
+        setIsLoading(false);
+      }
     };
 
     getPropertyData();
@@ -30,6 +36,7 @@ const Authed = () => {
 
   return (
     <Layout lightning={true} logout={true} page={'authed'}>
+      {error && <Redirect to="/error" />}
       <h1
         className={styles.title}
       >{`${data.address}, ${data.suburb}`}</h1>
