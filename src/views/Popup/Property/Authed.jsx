@@ -25,10 +25,11 @@ const Authed = () => {
         const rawPropertyData = await sendProperty(propertyInfo);
         const propertyData = handlePropertyData(rawPropertyData);
         setPropertyData(propertyData);
+        setIsLoading(false);
       } catch (error) {
+        setIsLoading(false);
         setIsError(error);
       }
-      setIsLoading(false);
     };
 
     getPropertyData();

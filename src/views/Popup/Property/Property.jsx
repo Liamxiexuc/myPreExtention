@@ -26,10 +26,11 @@ const Property = () => {
       try {
         const propertyInfo = await getPropertyInfo();
         setData(propertyInfo);
+        setIsloading(false);
       } catch (error) {
+        setIsloading(false);
         setIsError(true);
       }
-      setIsloading(false);
     };
 
     fetchProperty();
