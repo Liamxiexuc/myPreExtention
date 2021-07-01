@@ -31,8 +31,7 @@ class Invite extends Component {
   submit = (event) => {
     event.preventDefault();
     this.setState({ error: null });
-    const { getFieldsValue, getFieldValue, validateFields } =
-      this.props;
+    const { getFieldsValue, validateFields } = this.props;
     validateFields(async (err, values) => {
       const data = getFieldsValue();
       const keyLength = Object.keys(data).length;

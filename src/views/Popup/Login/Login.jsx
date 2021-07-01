@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
 import Layout from '../components/Layout.jsx';
 import Container from '../components/Container';
 import formCreate from '../components/formCreate.js';
