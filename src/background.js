@@ -15,6 +15,15 @@ const updateIcon = (tabId, url) => {
   chrome.action.setIcon({ path: 'icon16_gray.png', tabId: tabId });
 };
 
+chrome.runtime.onInstalled.addListener(function (details) {
+  if (details.reason === 'install') {
+    // Code to be executed on first install
+    chrome.tabs.create({
+      url: 'https://www.propertypowerplugin.com.au/',
+    });
+  }
+});
+
 chrome.tabs.onUpdated.addListener(function (tabId, change, tab) {
   const { url } = tab;
   updateIcon(tabId, url);
