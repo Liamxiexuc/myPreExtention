@@ -1,7 +1,7 @@
 {
   "name": "Property Power",
   "description": "Giving you the numbers the listing left out.",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js"
@@ -24,7 +24,6 @@
     "64": "icon64.png",
     "128": "icon128.png"
   },
-  "options_page": "index.html",
   "content_scripts": [
     {
       "matches": ["https://www.realestate.com.au/*"],
