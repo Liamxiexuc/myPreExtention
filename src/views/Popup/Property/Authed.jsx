@@ -11,12 +11,13 @@ import styles from './Authed.module.css';
 const Authed = () => {
   const [active, setActive] = useState('PROPERTY INTELLIGENCE');
   const [data, setData] = useState({});
-  const [error, setError] = useState(null);
+  const [isError, setIsError] = useState(false);
   const [propertyData, setPropertyData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const getPropertyData = async () => {
+      setIsError(false);
       setIsLoading(true);
       const propertyInfo = await getPropertyInfo();
       setData(propertyInfo);
@@ -24,11 +25,10 @@ const Authed = () => {
         const rawPropertyData = await sendProperty(propertyInfo);
         const propertyData = handlePropertyData(rawPropertyData);
         setPropertyData(propertyData);
-        setIsLoading(false);
       } catch (error) {
-        setError(error);
-        setIsLoading(false);
+        setIsError(error);
       }
+      setIsLoading(false);
     };
 
     getPropertyData();
@@ -36,7 +36,7 @@ const Authed = () => {
 
   return (
     <Layout lightning={true} logout={true} page={'authed'}>
-      {error && <Redirect to="/error" />}
+      {isError && <Redirect to="/error" />}
       <h1
         className={styles.title}
       >{`${data.address}, ${data.suburb}`}</h1>
