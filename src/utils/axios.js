@@ -10,21 +10,21 @@ import { getToken } from './authentication.js';
 axios.defaults.baseURL =
   'https://property-power.herokuapp.com/api/v1';
 
-const appendAuthToken = (config) => {
-  const jwtToken = getToken();
+const appendAuthToken = async (config) => {
+  const jwtToken = await getToken();
   const Authorization = jwtToken && `Bearer ${jwtToken}`;
 
   return { ...config, headers: { Authorization, ...config.header } };
 };
 
-export const get = (url, config = {}) =>
-  axios.get(url, appendAuthToken(config));
+export const get = async (url, config = {}) =>
+  axios.get(url, await appendAuthToken(config));
 
-export const post = (url, data, config = {}) =>
-  axios.post(url, data, appendAuthToken(config));
+export const post = async (url, data, config = {}) =>
+  axios.post(url, data, await appendAuthToken(config));
 
-export const put = (url, data, config = {}) =>
-  axios.put(url, data, appendAuthToken(config));
+export const put = async (url, data, config = {}) =>
+  axios.put(url, data, await appendAuthToken(config));
 
-export const del = (url, config = {}) =>
-  axios.delete(url, appendAuthToken(config));
+export const del = async (url, config = {}) =>
+  axios.delete(url, await appendAuthToken(config));
