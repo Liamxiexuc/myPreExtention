@@ -10,7 +10,10 @@ const getProperty = async () => {
   const stateInfoArray = stateInfo.split(' ');
   const state = stateInfoArray[0];
   const postcode = stateInfoArray[1];
-  const url = window.location.href;
+  let url = window.location.href;
+  if (url.includes('?')) {
+    url = url.split('?')[0];
+  }
   const propertyType = document.querySelector(
     '.property-info__property-type',
   ).innerHTML;
