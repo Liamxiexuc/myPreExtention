@@ -11,14 +11,19 @@ function Dashboard() {
   const [name, setName] = useState('');
   const [properties, setProperties] = useState([]);
   const [isLoading, setIsloading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   const getMember = async () => {
     setIsloading(true);
-    const memberData = await fetchMemberData();
-    const { userId, viewedProperty } = memberData;
-    setName(userId.fullname);
-    setProperties(viewedProperty);
-    setIsloading(false);
+    try {
+      const memberData = await fetchMemberData();
+      const { userId, viewedProperty } = memberData;
+      setName(userId.fullname);
+      setProperties(viewedProperty);
+      setIsloading(false);
+    } catch (error) {
+      setIsError(error);
+    }
   };
   useEffect(() => {
     getMember();
