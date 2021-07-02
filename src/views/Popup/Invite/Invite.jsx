@@ -18,14 +18,13 @@ class Invite extends Component {
     this.state = {
       isLoading: false,
       error: null,
-      memberId: '',
+      member: {},
     };
   }
 
   getMember = async () => {
-    const memberData = await fetchMemberData();
-    const { _id: memberId } = memberData;
-    this.setState({ memberId });
+    const member = await fetchMemberData();
+    this.setState({ member });
   };
 
   submit = (event) => {
@@ -42,10 +41,13 @@ class Invite extends Component {
       email1 && emails.push(email1);
       email2 && emails.push(email2);
       email3 && emails.push(email3);
-      const { memberId } = this.state;
+      const {
+        _id: memberId,
+        userId: { fullname: inviter },
+      } = this.state.member;
       try {
         this.setState({ isLoading: true });
-        await inviteMember(memberId, emails);
+        await inviteMember(memberId, inviter, emails);
         this.setState({ isLoading: false });
         this.props.history.push('/afterInvite');
       } catch (error) {

@@ -6,10 +6,11 @@ export const getMember = (memberId) => {
   return get(url).then((response) => response.data);
 };
 
-export const inviteMember = (memberId, emails) => {
+export const inviteMember = (memberId, inviter, emails) => {
   const url = `/members/${memberId}/invite`;
   const data = {
     emails,
+    inviter,
   };
 
   return post(url, data).then((response) => response.data);
