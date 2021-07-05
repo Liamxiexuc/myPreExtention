@@ -27,7 +27,7 @@ function Welcome(props) {
         <div className={styles.msg}>
           <div className={styles.left}></div>
           <div className={styles.mid}>
-            <p className={styles.text}>as we are stuill in beta...</p>
+            <p className={styles.text}>as we are still in beta...</p>
             <p className={styles.text}>
               you must be invited to create an account.
             </p>
@@ -38,14 +38,14 @@ function Welcome(props) {
           <p className={styles.tips}>
             BE INVITED BY ANOTHER "POWER" USER
           </p>
-          <Link onClick={handleClick} className={styles.btn} to="#">
-            Join Group
+          <Link className={styles.btn} to="/registration">
+            Join Waitlist
           </Link>
           <div className={styles.divider}>
             <span>OR</span>
           </div>
-          <Link className={styles.btn} to="/registration">
-            Join Waitlist
+          <Link onClick={handleClick} className={styles.btn} to="#">
+            Join Group
           </Link>
         </Container>
       </Layout>

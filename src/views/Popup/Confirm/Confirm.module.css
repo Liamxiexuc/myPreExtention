@@ -11,11 +11,15 @@
 }
 .title {
   font-family: Paladinscond;
-  margin: 0;
-  font-weight: 600;
+  margin: 0 0 12px;
   font-size: 24px;
   text-align: left;
-  margin-bottom: 12px;
+}
+.subTitle {
+  font-family: Paladinscond;
+  text-align: left;
+  font-size: 16px;
+  margin: 0 0 24px;
 }
 .text {
   font-size: 14px;

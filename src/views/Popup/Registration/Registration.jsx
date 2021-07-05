@@ -68,7 +68,6 @@ class Registration extends Component {
           <p className={styles.text}>
             PLEASE BE PATIENT - WE WILL BE IN TOUCH VERY SOON.
           </p>
-          <p className={styles.text}>WE PROMISE.</p>
           <form className={styles.form}>
             <div className={styles.sole}>
               <div className={styles.row}>

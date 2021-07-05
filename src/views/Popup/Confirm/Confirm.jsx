@@ -14,15 +14,15 @@ function Confirm() {
   return (
     <Layout btn="login">
       <Container title="YOUR NEXT POWER MOVE">
-        <h1 className={styles.title}>CONGRATULATIONS!</h1>
-        <p className={styles.text}>YOUR ARE IN THE QUEUE...</p>
-        <p className={styles.text}>TAKE ME TO THE FACEBOOK GROUP</p>
-        <p className={styles.text}>THERE MIGHT BE A FAST WAY</p>
+        <h1 className={styles.title}>CONGRATULATIONS</h1>
+        <h2 className={styles.subTitle}>
+          YOU ARE ON OUR WAITLIST...{' '}
+        </h2>
+        <p className={styles.text}>WANT TO SKIP THE QUEUE?</p>
         <p className={styles.text}>
           JOIN OUR FACEBOOK GROUP AND ASK ONE OF THE MEMBERS TO SEND
           YOU A "POWER" INVITE.
         </p>
-        <p className={styles.text}>SIMPLE.</p>
         <Link onClick={handleClick} className={styles.btn} to="#">
           TAKE ME TO THE FACEBOOK GROUP
         </Link>
