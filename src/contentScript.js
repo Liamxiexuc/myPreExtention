@@ -1,8 +1,6 @@
 /* global chrome */
 const getProperty = async () => {
-  const propertyInfo = document.querySelector(
-    '.property-info-address',
-  ).innerHTML;
+  const { propertyInfo, geoStyle } = await fetchDOM();
   const propertyInfoArray = propertyInfo.split(',');
   const address = propertyInfoArray[0].trim();
   const suburb = propertyInfoArray[1].trim();
@@ -18,7 +16,6 @@ const getProperty = async () => {
     '.property-info__property-type',
   ).innerHTML;
 
-  const geoStyle = await fetchGeoMap();
   let geoData = geoStyle.split('%7C')[1];
   geoData = geoData.split('&')[0];
   geoData = geoData.split('%2C');
@@ -38,22 +35,24 @@ const getProperty = async () => {
 };
 
 /**
- * Add google map (in the page) watcher
- *   and get the data once the map is loaded
+ * Add DOM watcher
+ *   get the data once the title and map are loaded
  *
  */
-const fetchGeoMap = () => {
+const fetchDOM = () => {
   return new Promise((resolve, reject) => {
-    let geoStyle;
     const watcher = setInterval(() => {
-      geoStyle = document
+      const propertyInfo = document.querySelector(
+        '.property-info-address',
+      )?.innerHTML;
+      const geoStyle = document
         .querySelector('.static-map__img')
         ?.getAttribute('style');
-      if (geoStyle) {
+      if (geoStyle && propertyInfo) {
         clearInterval(watcher);
-        resolve(geoStyle);
+        resolve({ propertyInfo, geoStyle });
       }
-    }, 50);
+    }, 100);
   });
 };
 
@@ -68,6 +67,9 @@ chrome.runtime.onMessage.addListener(function (
   switch (message.type) {
     case 'getProperty':
       sendResponse(propertyData);
+      break;
+    case 'urlChanged':
+      getProperty().then((res) => (propertyData = res));
       break;
     default:
       console.error('Unrecognised message: ', message);

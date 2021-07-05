@@ -27,6 +27,11 @@ chrome.runtime.onInstalled.addListener(function (details) {
 chrome.tabs.onUpdated.addListener(function (tabId, change, tab) {
   const { url } = tab;
   updateIcon(tabId, url);
+  if (change.status === 'complete') {
+    chrome.tabs.sendMessage(tabId, {
+      type: 'urlChanged',
+    });
+  }
 });
 
 chrome.tabs.onActivated.addListener(function (info) {
