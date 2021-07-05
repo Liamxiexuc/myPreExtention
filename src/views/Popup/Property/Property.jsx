@@ -1,6 +1,6 @@
 /* global chrome */
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Layout from '../components/Layout.jsx';
 import Container from '../components/Container';
 import WaveLoading from '../components/WaveLoading';
