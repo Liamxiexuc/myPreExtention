@@ -28,7 +28,7 @@ const Property = () => {
         setIsloading(false);
       } catch (error) {
         setIsloading(false);
-        setIsError(true);
+        setIsError(error);
       }
     };
 
@@ -38,6 +38,7 @@ const Property = () => {
   return (
     <Layout btn="login">
       <Container style={{ backgroundColor: 'white' }}>
+        {isError && <Redirect to="/error" />}
         {isLoading ? (
           <WaveLoading />
         ) : (

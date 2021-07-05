@@ -38,6 +38,7 @@ function Dashboard() {
     <Layout logout={true}>
       <Container style={{ backgroundColor: 'white' }}>
         <div className={styles.dashboard}>
+          {isError && <Redirect to="/error" />}
           {isLoading ? (
             <WaveLoading />
           ) : (
