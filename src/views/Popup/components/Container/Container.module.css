@@ -19,6 +19,7 @@
   flex-direction: column;
   text-align: center;
   position: relative;
+  min-height: 200px;
 }
 .main::after {
   content: '';
