@@ -23,6 +23,6 @@ export const getPropertyInfo = () => {
           );
         },
       );
-    }, 50);
+    }, 100);
   });
 };
