@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Layout from '../components/Layout.jsx';
 import Container from '../components/Container';
 import formCreate from '../components/formCreate.js';
@@ -115,6 +116,11 @@ class Login extends Component {
               </button>
             )}
           </form>
+          <div>
+            <Link className={styles.link} to="/reset_password">
+              Forgot your password?
+            </Link>
+          </div>
         </Container>
       </Layout>
     );
