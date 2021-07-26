@@ -11,6 +11,7 @@ import Property from './Property';
 import Authed from './Property/Authed.jsx';
 import ErrorPage from './ErrorPage';
 import ResetPassword from './ResetPassword';
+import AfterReset from './AfterReset';
 
 import styles from './App.module.css';
 
@@ -45,6 +46,7 @@ function App({ isPropertyPage, isLogin }) {
           path="/reset_password"
           component={ResetPassword}
         />
+        <Route exact path="/afterReset" component={AfterReset} />
         <Route path="/error" component={ErrorPage} />
       </Switch>
     </div>

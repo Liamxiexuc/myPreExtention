@@ -1,0 +1,17 @@
+.title {
+  color: var(--color-yellow);
+  font-family: Paladinscond;
+  font-size: 22px;
+  margin: 8px 24px 0;
+  text-align: left;
+}
+.text {
+  color: var(--color-burgundy);
+  margin: 0;
+  margin-bottom: 8px;
+  text-align: left;
+  text-transform: uppercase;
+}
+.img {
+  max-width: 278px;
+}
