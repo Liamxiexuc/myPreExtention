@@ -15,3 +15,10 @@ export const inviteMember = (memberId, inviter, emails) => {
 
   return post(url, data).then((response) => response.data);
 };
+
+export const resetPassword = (email) => {
+  const url = `/members/password`;
+  const data = { email };
+
+  return post(url, data).then((response) => response.data);
+};
