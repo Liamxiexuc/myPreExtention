@@ -10,6 +10,7 @@ import AfterInvite from './AfterInvite';
 import Property from './Property';
 import Authed from './Property/Authed.jsx';
 import ErrorPage from './ErrorPage';
+import ResetPassword from './ResetPassword';
 
 import styles from './App.module.css';
 
@@ -39,6 +40,11 @@ function App({ isPropertyPage, isLogin }) {
         <Route exact path="/authed" component={Authed} />
         <Route exact path="/property" component={Property} />
         <Route exact path="/authedProperty" component={Authed} />
+        <Route
+          exact
+          path="/reset_password"
+          component={ResetPassword}
+        />
         <Route path="/error" component={ErrorPage} />
       </Switch>
     </div>
