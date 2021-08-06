@@ -42,7 +42,7 @@
   background: var(--color-burgundy);
   border-radius: 24px;
   font-size: 12px;
-  margin: 32px 52px 16px;
+  margin: 32px 52px 12px;
   cursor: pointer;
   border: none;
   outline: none;
@@ -53,6 +53,7 @@
 }
 .link {
   text-decoration: none;
+  color: #1d7cc0;
 }
 .link:hover {
   text-decoration: underline;
