@@ -1,6 +1,13 @@
 /* global chrome */
 const getProperty = async () => {
-  const { propertyInfo, geoStyle } = await fetchDOM();
+  let dom = {};
+  try {
+    dom = await fetchDOM();
+  } catch (error) {
+    console.log(error);
+    return;
+  }
+  const { propertyInfo, geoStyle } = dom;
   const propertyInfoArray = propertyInfo.split(',');
   const address = propertyInfoArray[0].trim();
   const suburb = propertyInfoArray[1].trim();
@@ -45,6 +52,10 @@ const fetchDOM = () => {
       const propertyInfo = document.querySelector(
         '.property-info-address',
       )?.innerHTML;
+      if (!propertyInfo) {
+        clearInterval(watcher);
+        return reject('not in property page');
+      }
       const geoStyle = document
         .querySelector('.static-map__img')
         ?.getAttribute('style');
@@ -52,24 +63,38 @@ const fetchDOM = () => {
         clearInterval(watcher);
         resolve({ propertyInfo, geoStyle });
       }
+      return;
     }, 100);
   });
 };
 
 let propertyData;
-getProperty().then((res) => (propertyData = res));
 
-chrome.runtime.onMessage.addListener(function (
+chrome.runtime.onMessage.addListener(async function (
   message,
   sender,
   sendResponse,
 ) {
   switch (message.type) {
     case 'getProperty':
-      sendResponse(propertyData);
+      if (propertyData) {
+        sendResponse(propertyData);
+      } else {
+        const propertyData = await getProperty();
+        sendResponse(propertyData);
+      }
       break;
     case 'urlChanged':
-      getProperty().then((res) => (propertyData = res));
+      const currentUrl = window.location.href;
+      if (
+        currentUrl &&
+        currentUrl.includes('realestate.com.au/property')
+      ) {
+        propertyData = await getProperty();
+      } else {
+        propertyData = null;
+      }
+
       break;
     default:
       console.error('Unrecognised message: ', message);
