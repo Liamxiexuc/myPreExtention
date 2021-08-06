@@ -2,14 +2,7 @@
   font-family: 'Paladinscond';
   src: local('Paladinscond'),
     url('./assets/fonts/paladinscond.ttf') format('truetype');
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'AvenirNextMedium';
-  src: local('AvenirNextMedium'),
-    url('./assets/fonts/AvenirNextCondensed-UltraLight.woff')
-      format('woff');
+  font-display: swap;
 }
 
 @font-face {
@@ -17,12 +10,15 @@
   src: local('AvenirNextRegular'),
     url('./assets/fonts/AvenirNextCondensed-Regular.woff')
       format('woff');
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'AvenirNextBold';
-  src: local('AvenirNextBold'),
-    url('./assets/fonts/AvenirNext-Bold.woff') format('woff');
+  font-family: 'AvenirNextMedium';
+  src: local('AvenirNextMedium'),
+    url('./assets/fonts/AvenirNextCondensed-Medium.woff')
+      format('woff');
+  font-display: swap;
 }
 
 :root {
