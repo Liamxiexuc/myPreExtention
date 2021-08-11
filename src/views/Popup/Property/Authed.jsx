@@ -36,7 +36,7 @@ const Authed = () => {
   }, []);
 
   return (
-    <Layout lightning={true} logout={true} page={'authed'}>
+    <Layout lightning home>
       {isError && (
         <Redirect
           to={{ pathname: '/error', state: { error: isError } }}

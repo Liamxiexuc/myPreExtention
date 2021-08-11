@@ -7,7 +7,7 @@ import WaveLoading from '../components/WaveLoading';
 import { fetchMemberData } from '../../../utils/member.js';
 import styles from './Dashboard.module.css';
 
-function Dashboard() {
+function Dashboard({ isPropertyPage }) {
   const [name, setName] = useState('');
   const [properties, setProperties] = useState([]);
   const [isLoading, setIsloading] = useState(true);
@@ -35,7 +35,7 @@ function Dashboard() {
   };
 
   return (
-    <Layout logout={true}>
+    <Layout logout isPropertyPage={isPropertyPage}>
       <Container style={{ backgroundColor: 'white' }}>
         <div className={styles.dashboard}>
           {isError && <Redirect to="/error" />}

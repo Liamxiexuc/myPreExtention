@@ -37,7 +37,13 @@ function App({ isPropertyPage, isLogin }) {
             <Login {...props} isPropertyPage={isPropertyPage} />
           )}
         />
-        <Route exact path="/dashboard" component={Dashboard} />
+        <Route
+          exact
+          path="/dashboard"
+          render={(props) => (
+            <Dashboard {...props} isPropertyPage={isPropertyPage} />
+          )}
+        />
         <Route exact path="/invite" component={Invite} />
         <Route exact path="/afterInvite" component={AfterInvite} />
         <Route exact path="/authed" component={Authed} />

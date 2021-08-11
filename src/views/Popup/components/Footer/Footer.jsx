@@ -8,23 +8,38 @@ const FooterButton = ({
   lightning,
   logout,
   history,
-  page,
   backHome,
+  home,
+  isPropertyPage,
 }) => {
   const handleClick = () => {
     deleteToken();
-    if (page === 'authed') return history.replace('/property');
-    history.replace('/');
+    if (isPropertyPage) return history.replace('/property');
+    return history.replace('/');
   };
   const handleBack = () => history.goBack();
   const handleBackHome = () => history.replace('/');
+  const handleClickHome = () => history.push('/dashboard');
   const backStyle = lightning
     ? `${styles.back} ${styles.lightning}`
     : styles.back;
   if (logout)
     return (
-      <span onClick={handleClick} className={backStyle}>
-        Logout
+      <div className={styles.wrap}>
+        {isPropertyPage && (
+          <span onClick={handleBack} className={backStyle}>
+            &lt; Back
+          </span>
+        )}
+        <span onClick={handleClick} className={backStyle}>
+          Logout
+        </span>
+      </div>
+    );
+  if (home)
+    return (
+      <span onClick={handleClickHome} className={backStyle}>
+        Home
       </span>
     );
   if (backHome)
@@ -40,10 +55,7 @@ const FooterButton = ({
   );
 };
 
-const Footer = (props) => {
-  const { btn, lightning, logout, history, page, signup, backHome } =
-    props;
-
+const Footer = ({ btn, signup, ...rest }) => {
   return (
     <footer className={styles.footer}>
       {btn === 'login' ? (
@@ -64,13 +76,7 @@ const Footer = (props) => {
           )}
         </div>
       ) : (
-        <FooterButton
-          lightning={lightning}
-          logout={logout}
-          history={history}
-          page={page}
-          backHome={backHome}
-        />
+        <FooterButton {...rest} />
       )}
     </footer>
   );
