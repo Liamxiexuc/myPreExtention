@@ -7,7 +7,8 @@ import Login from './Login';
 import Dashboard from './Dashboard';
 import Invite from './Invite';
 import AfterInvite from './AfterInvite';
-import Property from './Property';
+// import Property from './Property';
+import Unauthed from './Property/Unauthed';
 import Authed from './Property/Authed.jsx';
 import ErrorPage from './ErrorPage';
 import ResetPassword from './ResetPassword';
@@ -19,7 +20,8 @@ function App({ isPropertyPage, isLogin }) {
   let homeComponent = Welcome;
 
   if (isPropertyPage) {
-    homeComponent = isLogin ? Authed : Property;
+    // homeComponent = isLogin ? Authed : Property;
+    homeComponent = isLogin ? Authed : Unauthed;
   }
 
   return (
@@ -39,7 +41,8 @@ function App({ isPropertyPage, isLogin }) {
         <Route exact path="/invite" component={Invite} />
         <Route exact path="/afterInvite" component={AfterInvite} />
         <Route exact path="/authed" component={Authed} />
-        <Route exact path="/property" component={Property} />
+        {/* <Route exact path="/property" component={Property} /> */}
+        <Route exact path="/property" component={Unauthed} />
         <Route exact path="/authedProperty" component={Authed} />
         <Route
           exact
