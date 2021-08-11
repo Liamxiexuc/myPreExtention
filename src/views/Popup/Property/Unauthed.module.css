@@ -13,6 +13,7 @@
 .property {
   padding: 12px 28px;
   margin-bottom: 18px;
+  min-height: 210px;
 }
 .container {
   border-radius: 4px;
@@ -34,4 +35,22 @@
 }
 .cardTitle:last-of-type {
   border-bottom: none;
+}
+.divider {
+  position: relative;
+  height: 1px;
+  background: var(--color-burgundy);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px 0;
+}
+.divider span {
+  font-family: Paladinscond;
+  color: var(--color-burgundy);
+  position: absolute;
+  background-color: var(--color-white);
+}
+.text {
+  margin: 0;
 }

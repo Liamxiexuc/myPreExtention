@@ -16,6 +16,7 @@ const Unauthed = ({ history }) => {
   const [propertyData, setPropertyData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [modal, setModal] = useState(false);
+  const [limitModal, setLimitModal] = useState(false);
 
   useEffect(() => {
     const getPropertyData = async () => {
@@ -37,6 +38,8 @@ const Unauthed = ({ history }) => {
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
+        const { status } = error.response;
+        if (status === 429) return setLimitModal(true);
         setIsError(error);
       }
     };
@@ -80,7 +83,7 @@ const Unauthed = ({ history }) => {
           >{`${data.address}, ${data.suburb}`}</h1>
           <main className={styles.property}>
             <section className={styles.container}>
-              {propertyData &&
+              {propertyData.length ? (
                 propertyData.map((i) => (
                   <Card
                     key={i.title}
@@ -89,7 +92,15 @@ const Unauthed = ({ history }) => {
                     active={active}
                     setActive={setActive}
                   />
-                ))}
+                ))
+              ) : (
+                <h5
+                  onClick={handleClick}
+                  className={styles.cardTitle}
+                >
+                  PROPERTY INTELLIGENCE
+                </h5>
+              )}
               <h5 onClick={handleClick} className={styles.cardTitle}>
                 STREET INTELLIGENCE
               </h5>
@@ -111,6 +122,25 @@ const Unauthed = ({ history }) => {
                 Register your own account and get access to more
                 advanced features.
               </div>
+            </Modal>
+            <Modal
+              visible={limitModal}
+              onCancel={() => setLimitModal(false)}
+              onOk={handleConfirm}
+              title="Reached weekly limit"
+              cancelText="No, thanks"
+            >
+              <p className={styles.text}>
+                You have reached the max number of requests (5
+                per/week), please try again after 7 days.
+              </p>
+              <div className={styles.divider}>
+                <span>OR</span>
+              </div>
+              <p className={styles.text}>
+                Register your own account to increase your weekly
+                limits and get access to more advanced features.
+              </p>
             </Modal>
           </main>
         </Fragment>
