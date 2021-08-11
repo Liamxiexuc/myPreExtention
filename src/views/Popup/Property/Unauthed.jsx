@@ -127,7 +127,7 @@ const Unauthed = ({ history }) => {
               visible={limitModal}
               onCancel={() => setLimitModal(false)}
               onOk={handleConfirm}
-              title="Reached weekly limit"
+              title="Weekly limit reached"
               cancelText="No, thanks"
             >
               <p className={styles.text}>
