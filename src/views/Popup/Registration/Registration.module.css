@@ -31,9 +31,9 @@
 }
 .btn {
   font-family: Paladinscond;
-  color: var(--color-white);
+  color: var(--color-burgundy);
   padding: 12px 36px;
-  background: var(--color-burgundy);
+  background: var(--color-milky);
   border-radius: 24px;
   font-size: 12px;
   margin-top: 16px;

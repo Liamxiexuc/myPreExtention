@@ -58,7 +58,7 @@ class Registration extends Component {
     const error = { ...this.state.error };
     const serverErrorMsg = error?.response?.data?.message;
     return (
-      <Layout btn="login">
+      <Layout>
         <Container title="YOUR NEXT POWER MOVE">
           <p className={styles.text}>
             AS WE ARE STILL TESTING AND IMPROVING THINGS, WE ARE ONLY
