@@ -1,0 +1,37 @@
+.title {
+  font-weight: 600;
+  font-family: Paladinscond;
+  color: var(--color-yellow);
+  font-size: 24px;
+  background: var(--text-yellow-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-right: 1%;
+  margin: 4px 28px 0;
+  font-size: 22px;
+}
+.property {
+  padding: 12px 28px;
+  margin-bottom: 18px;
+}
+.container {
+  border-radius: 4px;
+  overflow: hidden;
+}
+.cardTitle {
+  font-family: Paladinscond;
+  padding: 12px 12px;
+  background-color: var(--color-burgundy);
+  margin: 0;
+  font-size: 14px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-red);
+  color: var(--color-white);
+  opacity: 0.5;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+.cardTitle:last-of-type {
+  border-bottom: none;
+}

@@ -1,3 +1,56 @@
+export const handleBaiscPropertyData = (data) => {
+  const {
+    property: {
+      lineAddress,
+      appraisedValue,
+      appraisedRent,
+      appraisedYield,
+      motivationRating,
+      dom,
+    },
+  } = data;
+
+  return [
+    {
+      title: 'PROPERTY INTELLIGENCE',
+      data: [
+        {
+          title: 'address',
+          value: lineAddress || ' - ',
+        },
+        {
+          title: 'appraised value',
+          value: appraisedValue ? `$${appraisedValue}` : ' - ',
+        },
+        {
+          title: 'appraised rent',
+          value: appraisedRent ? `$${appraisedRent}` : ' - ',
+        },
+        {
+          title: 'appraised yield',
+          value: appraisedYield ? `${appraisedYield}%` : ' - ',
+        },
+        {
+          title: 'estimated sale price',
+          value: ' - ',
+        },
+        {
+          title: 'days on market',
+          value: dom ? `${dom} days` : ' - ',
+        },
+        {
+          title: 'discounting',
+          value: ' - ',
+        },
+        {
+          title: 'vendor distress',
+          value: motivationRating || ' - ',
+        },
+      ],
+    },
+  ];
+};
+
 export const handlePropertyData = (data) => {
   const {
     property: {
