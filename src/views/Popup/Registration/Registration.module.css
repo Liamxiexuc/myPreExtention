@@ -31,15 +31,15 @@
 }
 .btn {
   font-family: Paladinscond;
-  color: var(--color-burgundy);
   padding: 12px 36px;
-  background: var(--color-milky);
   border-radius: 24px;
   font-size: 12px;
   margin-top: 16px;
   cursor: pointer;
   border: none;
   outline: none;
+  color: var(--color-burgundy);
+  background-color: var(--color-yellow);
 }
 .disabled {
   opacity: 0.8;

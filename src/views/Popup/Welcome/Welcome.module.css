@@ -45,6 +45,10 @@
   font-size: 13px;
   margin-top: 30px;
 }
+.signup {
+  color: var(--color-burgundy);
+  background-color: var(--color-yellow);
+}
 .divider {
   position: relative;
   margin: 30px 42px 0;

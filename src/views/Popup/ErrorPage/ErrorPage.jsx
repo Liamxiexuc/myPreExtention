@@ -8,7 +8,7 @@ export default function ErrorPage({ location }) {
     ? 'Sorry, the power data is currently not available for this property.'
     : 'Sorry, something went wrong. Please try again later.';
   return (
-    <Layout lightning={true}>
+    <Layout lightning backHome>
       <h1 className={styles.title}>Oops.</h1>
       <p className={styles.text}>{errorMsg}</p>
       <div className={styles.img}>

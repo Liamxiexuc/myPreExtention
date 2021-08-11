@@ -38,7 +38,10 @@ function Welcome(props) {
           <p className={styles.tips}>
             BE INVITED BY ANOTHER "POWER" USER
           </p>
-          <Link className={styles.btn} to="/registration">
+          <Link
+            className={`${styles.btn} ${styles.signup}`}
+            to="/registration"
+          >
             Join Waitlist
           </Link>
           <div className={styles.divider}>

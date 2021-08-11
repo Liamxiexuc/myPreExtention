@@ -5,7 +5,7 @@ import Avatar from '../../../assets/avatar.png';
 import styles from './AfterInvite.module.css';
 
 const AfterInvite = () => (
-  <Layout>
+  <Layout backHome>
     <h1 className={styles.title}>WELL DONE!</h1>
     <Container
       style={{

@@ -64,7 +64,12 @@ const Unauthed = ({ history }) => {
   const handleConfirm = () => history.push('/registration');
 
   return (
-    <Layout btn="login" lightning={true} page={'authed'}>
+    <Layout
+      btn="login"
+      lightning={true}
+      page={'authed'}
+      signup={true}
+    >
       {isError && (
         <Redirect
           to={{ pathname: '/error', state: { error: isError } }}

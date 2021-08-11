@@ -12,9 +12,9 @@ function Confirm() {
     });
   };
   return (
-    <Layout btn="login">
+    <Layout backHome>
       <Container title="YOUR NEXT POWER MOVE">
-        <h1 className={styles.title}>CONGRATULATIONS</h1>
+        <h1 className={styles.title}>CONGRATULATIONS!</h1>
         <h2 className={styles.subTitle}>
           YOU ARE ON OUR WAITLIST...{' '}
         </h2>
@@ -24,7 +24,7 @@ function Confirm() {
           YOU A "POWER" INVITE.
         </p>
         <Link onClick={handleClick} className={styles.btn} to="#">
-          TAKE ME TO THE FACEBOOK GROUP
+          JOIN GROUP
         </Link>
       </Container>
     </Layout>
