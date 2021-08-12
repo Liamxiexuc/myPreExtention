@@ -3,10 +3,15 @@ import EmptyLightning from '../../../../assets/lightning-empty.png';
 import FullLightning from '../../../../assets/lightning-full.png';
 import styles from './GradeSection.module.css';
 
-const GradeSection = ({ inviteCount }) => {
-  const isPro = inviteCount > 2;
-  const fullIconCount = inviteCount > 3 ? 3 : inviteCount;
-  const emptyIconCount = 3 - inviteCount > 0 ? 3 - inviteCount : 0;
+const GradeSection = ({ inviteCount, isAdmin }) => {
+  let isPro = inviteCount > 2;
+  let fullIconCount = inviteCount > 3 ? 3 : inviteCount;
+  let emptyIconCount = 3 - inviteCount > 0 ? 3 - inviteCount : 0;
+  if (isAdmin) {
+    isPro = true;
+    fullIconCount = 3;
+    emptyIconCount = 0;
+  }
   return (
     <>
       {isPro ? (
@@ -22,20 +27,22 @@ const GradeSection = ({ inviteCount }) => {
       <div className={styles.iconWrap}>
         {Array(fullIconCount)
           .fill(1)
-          .map(() => (
+          .map((_, index) => (
             <img
+              key={index}
               className={styles.img}
               src={FullLightning}
-              alt="default"
+              alt="yellow lightning icon"
             ></img>
           ))}
         {Array(emptyIconCount)
           .fill(1)
-          .map(() => (
+          .map((_, index) => (
             <img
+              key={index}
               className={styles.img}
               src={EmptyLightning}
-              alt="default"
+              alt="grey lightning icon"
             ></img>
           ))}
       </div>

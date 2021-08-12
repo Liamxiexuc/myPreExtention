@@ -10,24 +10,15 @@ import { fetchMemberData } from '../../../utils/member.js';
 import styles from './Dashboard.module.css';
 
 function Dashboard({ isPropertyPage }) {
-  const [name, setName] = useState('');
-  const [properties, setProperties] = useState([]);
   const [isLoading, setIsloading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [inviteCount, setInviteCount] = useState(null);
+  const [member, setMember] = useState({});
 
   const getMember = async () => {
     setIsloading(true);
     try {
       const memberData = await fetchMemberData();
-      const {
-        userId,
-        latestPropertyList,
-        inviteCount: count,
-      } = memberData;
-      setName(userId.fullname);
-      setProperties(latestPropertyList);
-      setInviteCount(count);
+      setMember(memberData);
       setIsloading(false);
     } catch (error) {
       setIsError(error);
@@ -54,8 +45,13 @@ function Dashboard({ isPropertyPage }) {
             <WaveLoading />
           ) : (
             <>
-              <h1 className={styles.title}>WELCOME {name}!</h1>
-              <GradeSection inviteCount={inviteCount} />
+              <h1 className={styles.title}>
+                WELCOME {member?.userId?.fullname}!
+              </h1>
+              <GradeSection
+                isAdmin={member?.isAdmin}
+                inviteCount={member?.inviteCount}
+              />
               <Link className={styles.btn} to="/invite">
                 INVITE ANOTHER POWER USER
               </Link>
@@ -63,7 +59,7 @@ function Dashboard({ isPropertyPage }) {
                 YOUR PREVIOUS PROPERTIES:
               </h5>
               <ul className={styles.list}>
-                {properties.map((item) => {
+                {member?.latestPropertyList?.map((item) => {
                   const { _id, address, suburb, url } = item;
                   return (
                     <li
