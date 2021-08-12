@@ -8,7 +8,7 @@ import Dashboard from './Dashboard';
 import Invite from './Invite';
 import AfterInvite from './AfterInvite';
 // import Property from './Property';
-import Unauthed from './Property/Unauthed';
+import Unauthed from './Property/Unauthed.jsx';
 import Authed from './Property/Authed.jsx';
 import ErrorPage from './ErrorPage';
 import ResetPassword from './ResetPassword';
