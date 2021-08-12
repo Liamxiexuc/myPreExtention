@@ -46,19 +46,6 @@ const Unauthed = ({ history }) => {
 
     getPropertyData();
   }, []);
-  // TODO add limit Error handler
-  // if (isError) {
-  //   const errorCode = isError.response.status;
-  //   if (errorCode === 429) {
-  //     console.log('object');
-  //     return;
-  //   }
-  //   return (
-  //     <Redirect
-  //       to={{ pathname: '/error', state: { error: isError } }}
-  //     />
-  //   );
-  // }
 
   const handleClick = () => {
     setModal(!modal);
@@ -83,7 +70,7 @@ const Unauthed = ({ history }) => {
           >{`${data.address}, ${data.suburb}`}</h1>
           <main className={styles.property}>
             <section className={styles.container}>
-              {propertyData.length ? (
+              {propertyData?.length ? (
                 propertyData.map((i) => (
                   <Card
                     key={i.title}

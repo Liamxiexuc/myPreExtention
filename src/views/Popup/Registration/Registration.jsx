@@ -19,7 +19,7 @@ class Registration extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: null, // TODO Maybe remove from state?
+      error: null,
       isLoading: false,
     };
   }
