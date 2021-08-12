@@ -59,7 +59,7 @@ const Authed = ({ history }) => {
           >{`${data.address}, ${data.suburb}`}</h1>
           <main className={styles.property}>
             <section className={styles.container}>
-              {propertyData.length ? (
+              {propertyData?.length ? (
                 propertyData.map((i) => (
                   <Card
                     key={i.title}
