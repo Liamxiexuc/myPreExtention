@@ -1,10 +1,12 @@
 /* global chrome */
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import Layout from '../components/Layout.jsx';
 import Container from '../components/Container';
 import WaveLoading from '../components/WaveLoading';
+import GradeSection from './components/GradeSection.jsx';
 import { fetchMemberData } from '../../../utils/member.js';
+
 import styles from './Dashboard.module.css';
 
 function Dashboard({ isPropertyPage }) {
@@ -12,14 +14,20 @@ function Dashboard({ isPropertyPage }) {
   const [properties, setProperties] = useState([]);
   const [isLoading, setIsloading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [inviteCount, setInviteCount] = useState(null);
 
   const getMember = async () => {
     setIsloading(true);
     try {
       const memberData = await fetchMemberData();
-      const { userId, viewedProperty } = memberData;
+      const {
+        userId,
+        latestPropertyList,
+        inviteCount: count,
+      } = memberData;
       setName(userId.fullname);
-      setProperties(viewedProperty);
+      setProperties(latestPropertyList);
+      setInviteCount(count);
       setIsloading(false);
     } catch (error) {
       setIsError(error);
@@ -36,17 +44,18 @@ function Dashboard({ isPropertyPage }) {
 
   return (
     <Layout logout isPropertyPage={isPropertyPage}>
-      <Container style={{ backgroundColor: 'white' }}>
+      <Container
+        wrapStyle={{ padding: '0 28px' }}
+        style={{ backgroundColor: 'white' }}
+      >
         <div className={styles.dashboard}>
           {isError && <Redirect to="/error" />}
           {isLoading ? (
             <WaveLoading />
           ) : (
-            <Fragment>
+            <>
               <h1 className={styles.title}>WELCOME {name}!</h1>
-              <p className={styles.msg}>
-                UNLOCK THE ADVANCED POWER FEATURES...
-              </p>
+              <GradeSection inviteCount={inviteCount} />
               <Link className={styles.btn} to="/invite">
                 INVITE ANOTHER POWER USER
               </Link>
@@ -73,7 +82,7 @@ function Dashboard({ isPropertyPage }) {
                 LISTING TO LOAD UP ITS POWER DATA... THIS WINDOW WILL
                 UPDATE AUTOMATICALLY.
               </p>
-            </Fragment>
+            </>
           )}
         </div>
       </Container>
