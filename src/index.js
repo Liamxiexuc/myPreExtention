@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { MemoryRouter } from 'react-router';
 import { isAuthenticated } from './utils/authentication.js';
 import App from './views/Popup/App';
-import { isValidDomain } from './utils/helper.js';
+import { isHousePage } from './utils/helper.js';
 import './assets/fonts/paladinscond.ttf';
 import 'normalize.css';
 import './variables.css';
@@ -51,18 +51,8 @@ chrome.tabs.query(
   { active: true, currentWindow: true },
   async function (tab) {
     //Get Url Before render, and pass it to router
-    let isPropertyPage = false;
-    let currentUrl = tab[0].url;
-    currentUrl = currentUrl.split('?')[0];
-    const isIncludeDomain = isValidDomain(currentUrl);
-    const isSepcificHouse = !!currentUrl
-      .split('-')
-      ?.pop()
-      .match(/^-?\d+$/);
-
-    if (isIncludeDomain && isSepcificHouse) {
-      isPropertyPage = true;
-    }
+    const currentUrl = tab[0].url;
+    const isPropertyPage = isHousePage(currentUrl);
     const isLogin = await isAuthenticated();
 
     ReactDOM.render(
