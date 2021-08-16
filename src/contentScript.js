@@ -1,4 +1,39 @@
 /* global chrome */
+const setProperty = (property) => {
+  chrome.storage.local.set({ property });
+};
+
+const resetProperty = () => {
+  chrome.storage.local.remove(['property']);
+};
+
+/**
+ * Add DOM watcher
+ *   get the data once the title and map are loaded
+ *
+ */
+const fetchDOM = () => {
+  return new Promise((resolve, reject) => {
+    const watcher = setInterval(() => {
+      const propertyInfo = document.querySelector(
+        '.property-info-address',
+      )?.innerHTML;
+      if (!propertyInfo) {
+        clearInterval(watcher);
+        return reject('not in property page');
+      }
+      const geoStyle = document
+        .querySelector('.static-map__img')
+        ?.getAttribute('style');
+      if (geoStyle && propertyInfo) {
+        clearInterval(watcher);
+        resolve({ propertyInfo, geoStyle });
+      }
+      return;
+    }, 100);
+  });
+};
+
 const getProperty = async () => {
   let dom = {};
   try {
@@ -41,32 +76,7 @@ const getProperty = async () => {
   };
 };
 
-/**
- * Add DOM watcher
- *   get the data once the title and map are loaded
- *
- */
-const fetchDOM = () => {
-  return new Promise((resolve, reject) => {
-    const watcher = setInterval(() => {
-      const propertyInfo = document.querySelector(
-        '.property-info-address',
-      )?.innerHTML;
-      if (!propertyInfo) {
-        clearInterval(watcher);
-        return reject('not in property page');
-      }
-      const geoStyle = document
-        .querySelector('.static-map__img')
-        ?.getAttribute('style');
-      if (geoStyle && propertyInfo) {
-        clearInterval(watcher);
-        resolve({ propertyInfo, geoStyle });
-      }
-      return;
-    }, 100);
-  });
-};
+getProperty().then((data) => setProperty(data));
 
 let propertyData;
 
@@ -77,24 +87,16 @@ chrome.runtime.onMessage.addListener(async function (
 ) {
   switch (message.type) {
     case 'getProperty':
-      if (propertyData) {
-        sendResponse(propertyData);
-      } else {
-        const propertyData = await getProperty();
-        sendResponse(propertyData);
-      }
+      propertyData = await getProperty();
+      setProperty(propertyData);
       break;
     case 'urlChanged':
       const currentUrl = window.location.href;
-      if (
-        currentUrl &&
-        currentUrl.includes('realestate.com.au/property')
-      ) {
+      propertyData && resetProperty();
+      if (currentUrl?.includes('realestate.com.au/property')) {
         propertyData = await getProperty();
-      } else {
-        propertyData = null;
+        setProperty(propertyData);
       }
-
       break;
     default:
       console.error('Unrecognised message: ', message);

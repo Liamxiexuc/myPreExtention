@@ -7,12 +7,12 @@ export const setToken = (token) => {
   chrome.storage.local.set({ jwt: token });
 };
 
-export const getToken = () => {
+export const getToken = (type = JWT_KEY) => {
   return new Promise((resolve, reject) => {
-    chrome.storage.local.get([JWT_KEY], function (result) {
+    chrome.storage.local.get([type], function (result) {
       if (!result) return reject('error');
-      const { jwt } = result;
-      resolve(jwt);
+      resolve(result[type]);
+      return;
     });
   });
 };
